@@ -63,7 +63,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_02.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_03.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;20160707204048899.gif">
-<meta property="og:updated_time" content="2019-11-08T13:21:54.393Z">
+<meta property="og:updated_time" content="2019-11-08T13:32:46.719Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_01.png">
 
@@ -220,7 +220,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-08 12:26:25 / 修改时间：21:21:54" itemprop="dateCreated datePublished" datetime="2019-11-08T12:26:25+08:00">2019-11-08</time>
+              <time title="创建时间：2019-11-08 12:26:25 / 修改时间：21:32:46" itemprop="dateCreated datePublished" datetime="2019-11-08T12:26:25+08:00">2019-11-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -268,6 +268,7 @@ s = \textbf{F}_{ex}(z,W) = \sigma(g(z,W)) = \sigma(W_2\delta(W_1z))</script><p>�
 <h2 id="Stand-Alone-Self-Attention"><a href="#Stand-Alone-Self-Attention" class="headerlink" title="Stand-Alone Self-Attention"></a>Stand-Alone Self-Attention</h2><p>卷积是现代计算机视觉系统的基本单元。最近的方法主张 going beyond convolutions 以捕获 long-range dependencies。这些工作着重于 content-based interactions（ 例如 self-attention 和 non-local means ）增强卷积模型。随之而来的自然问题是，attention 是否可以作为视觉模型的 stand-alone primitive，而不是仅仅作为卷积之上的增强。在开发和测试 pure self-attention视觉模型时，作者验证了self-attention 确实可以是有效的独立层。使用应用于 ResNet 模型的一种形式的 self-attentional 替换 spatial convolutions 的所有实例的简单过程将产生一个 fully self-attentional 的模型，该模型在 ImageNet 分类表现出色，FLOPS减少了12％，参数减少了29％。在COCO对象检测中，pure self-attention 模型与 RetinaNe t的 mAP 相匹配，而FLOPS减少了39％，参数减少了34％。详细的 ablation 研究表明，self-attention 在后面的层中使用时尤其有影响。这些结果表明，stand-alone self-attention 是视觉从业者工具箱的重要补充。</p>
 <p>CNN 发展迅速，但是捕获 long range interactions 仍然具有挑战性。最近，attention 机制被广泛应用，以解决这个问题，如基于 channel-based attention 机制的 Squeeze-Excite，以及基于 spatially-aware attention 机制的 Non-local. 这些工作使用 global attention layers 作为现有网络的 add-on. 这些全局形式涉及输入的所有空间位置，将其使用限制在通常需要对原始图像进行大量降采样的small inputs 中。</p>
 <p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/20160707204048899.gif" alt=""></p>
+<p>上图来自<a href="https://blog.csdn.net/v_july_v/article/details/51812459" target="_blank" rel="noopener">这个博客</a>. 很详细的展示了卷积过程。</p>
 <p>未完待续……</p>
 <h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><p>[1] Guan, Qingji, et al. “Diagnose like a radiologist: Attention guided convolutional neural network for thorax disease classification.” <em>arXiv preprint arXiv:1801.09927</em> (2018). <a href="https://arxiv.org/abs/1801.09927" target="_blank" rel="noopener">https://arxiv.org/abs/1801.09927</a></p>
 <p>[2] <a href="https://blog.csdn.net/cskywit/article/details/79569788" target="_blank" rel="noopener">https://blog.csdn.net/cskywit/article/details/79569788</a></p>
