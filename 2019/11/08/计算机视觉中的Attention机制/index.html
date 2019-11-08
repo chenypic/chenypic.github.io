@@ -299,6 +299,7 @@ H_g(x,y) = \max_k(|f_g^k(x,y)|), k \in \{1,\dots,K\}.  \;\;\;\;   （3）</scrip
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
         </div>
           
@@ -508,6 +509,24 @@ H_g(x,y) = \max_k(|f_g^k(x,y)|), k \in \{1,\dots,K\}.  \;\;\;\;   （3）</scrip
     
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'b518bd54c879c20706b4',
+      clientSecret: 'f601dee7ed1d248ae971191226d140acbb9ca107',
+      repo: 'PingLun',
+      owner: 'chenypic',
+      admin: ['chenypic'],
+      id: '78dd37496a68710294f0174c569ca3c9',
+        language: '',
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
 
 </body>
 </html>

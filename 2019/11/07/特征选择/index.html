@@ -300,6 +300,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
         </div>
           
@@ -459,6 +460,24 @@
   
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'b518bd54c879c20706b4',
+      clientSecret: 'f601dee7ed1d248ae971191226d140acbb9ca107',
+      repo: 'PingLun',
+      owner: 'chenypic',
+      admin: ['chenypic'],
+      id: '433fa753a507ff199e426334ec7cb652',
+        language: '',
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
 
 </body>
 </html>
