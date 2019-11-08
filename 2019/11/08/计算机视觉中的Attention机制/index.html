@@ -61,7 +61,8 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_01.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_02.png">
-<meta property="og:updated_time" content="2019-11-08T10:42:32.180Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_03.png">
+<meta property="og:updated_time" content="2019-11-08T11:14:18.113Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_01.png">
 
@@ -218,7 +219,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-08 12:26:25 / 修改时间：18:42:32" itemprop="dateCreated datePublished" datetime="2019-11-08T12:26:25+08:00">2019-11-08</time>
+              <time title="创建时间：2019-11-08 12:26:25 / 修改时间：19:14:18" itemprop="dateCreated datePublished" datetime="2019-11-08T12:26:25+08:00">2019-11-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -254,7 +255,9 @@
 <p>思路很清晰，接下来重点分析做 attention 的：</p>
 <p> $f_g^k(x,y)​$ 表示最后一层卷积的第 $k​$ 个 channel，$g​$ 表示是 global branch. 首先，对 $f_g^k(x,y)​$ 取绝对值。然后，通过计算 channels 上的最大值得到 attention heat map $H_g​$. </p>
 <script type="math/tex; mode=display">
-H_g(x,y) = \max_k(|f_g^k(x,y)|), k \in \{1,\dots,K\}.</script><p>$H_g$ 的值表示了 activations 的重要性。</p>
+H_g(x,y) = \max_k(|f_g^k(x,y)|), k \in \{1,\dots,K\}.  \;\;\;\;   （3）</script><p>$H_g​$ 的值表示了 activations 的重要性。</p>
+<p>上面的叫做可以称之为 <strong>hard attention</strong>，权重要么是 0，要么是 1. 下面介绍几个 <strong>soft attention</strong>.</p>
+<h2 id="Squeeze-And-Excitation-Networks"><a href="#Squeeze-And-Excitation-Networks" class="headerlink" title="Squeeze-And-Excitation-Networks"></a>Squeeze-And-Excitation-Networks</h2><p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/attention_03.png" alt=""></p>
 <p>未完待续……</p>
 <h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><p>[1] Guan, Qingji, et al. “Diagnose like a radiologist: Attention guided convolutional neural network for thorax disease classification.” <em>arXiv preprint arXiv:1801.09927</em> (2018). <a href="https://arxiv.org/abs/1801.09927" target="_blank" rel="noopener">https://arxiv.org/abs/1801.09927</a></p>
 <p>[2] <a href="https://blog.csdn.net/cskywit/article/details/79569788" target="_blank" rel="noopener">https://blog.csdn.net/cskywit/article/details/79569788</a></p>
@@ -320,7 +323,7 @@ H_g(x,y) = \max_k(|f_g^k(x,y)|), k \in \{1,\dots,K\}.</script><p>$H_g$ 的值表
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料："><span class="nav-number">1.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Squeeze-And-Excitation-Networks"><span class="nav-number">1.</span> <span class="nav-text">Squeeze-And-Excitation-Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料："><span class="nav-number">1.1.</span> <span class="nav-text">参考资料：</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
