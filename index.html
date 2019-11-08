@@ -300,8 +300,7 @@
 
       
         
-          
-            <h1 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h1><p>基于变量的数量进行分类：</p>
+          <p>基于变量的数量进行分类：</p>
 <ul>
 <li><p>Univariate methods, variable ranking: consider the input variables (features, attributes) one by one.</p>
 </li>
@@ -314,26 +313,13 @@
 <li>包裹式（wrapper）: selects a subset of variables taking into account the model that shall use them.</li>
 <li>嵌入式（embedded）: the feature selection method is built in the ML model (or rather its training algorithm) itself (e.g. decision trees).</li>
 </ul>
-<h3 id="常用的filter方法"><a href="#常用的filter方法" class="headerlink" title="常用的filter方法"></a>常用的filter方法</h3><p><img src="https://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1537552825/Image3_fqsh79.png" alt=""></p>
-<p>过滤方法使用特定的评估标准，如距离，信息，依赖性和一致性等，对特征进行排序，从而进行进行变量选择，称之为”过滤“。过滤方法通常用作数据预处理步骤。 特征的选择独立于任何机器学习算法。 特征基于统计分数给出排名，统计分数倾向与结果变量相关的特征。</p>
-<h4 id="1-F-Test-ANOVA"><a href="#1-F-Test-ANOVA" class="headerlink" title="1. F Test (ANOVA)"></a>1. F Test (ANOVA)</h4><p>Scikit-learn 提供了 <strong>Selecting K best</strong> 个特征，使用F-test.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sklearn.feature_selection.f_regression</span><br></pre></td></tr></table></figure>
-
-<p>对于回归问题。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sklearn.feature_selection.f_classif</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-Mutual-Information"><a href="#2-Mutual-Information" class="headerlink" title="2. Mutual Information"></a>2. Mutual Information</h4><p>F-test方法只能捕获标签与特征间的线性关系，互信息可以很好的处理非线性关系。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sklearn.feature_selection.mututal_info_regression </span><br><span class="line">sklearn.feature_selection.mututal_info_classif</span><br></pre></td></tr></table></figure>
-
-<h3 id="常用的Wrapper方法"><a href="#常用的Wrapper方法" class="headerlink" title="常用的Wrapper方法"></a>常用的Wrapper方法</h3><p>选择一个特征子集，然后评估其建模性能。</p>
-<h4 id="1-Forward-Search"><a href="#1-Forward-Search" class="headerlink" title="1. Forward Search"></a>1. Forward Search</h4><h4 id="2-Recursive-Feature-Elimination"><a href="#2-Recursive-Feature-Elimination" class="headerlink" title="2. Recursive Feature Elimination"></a>2. Recursive Feature Elimination</h4><p>Wrapper 方法通过贪婪搜索选择最好的特征集。缺点是需要训练的大量模型，计算量大。</p>
-<h3 id="常用的Embedded方法"><a href="#常用的Embedded方法" class="headerlink" title="常用的Embedded方法"></a>常用的Embedded方法</h3><h4 id="1-LASSO-Linear-Regression"><a href="#1-LASSO-Linear-Regression" class="headerlink" title="1. LASSO Linear Regression"></a>1. LASSO Linear Regression</h4><h4 id="2-Tree-based-models"><a href="#2-Tree-based-models" class="headerlink" title="2. Tree based models"></a>2. Tree based models</h4><h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><p>[1] <a href="https://towardsdatascience.com/why-how-and-when-to-apply-feature-selection-e9c69adfabf2" target="_blank" rel="noopener">Why, How and When to apply Feature Selection</a></p>
-<p>[2] <a href="https://www.datacamp.com/community/tutorials/feature-selection-python" target="_blank" rel="noopener">Beginner’s Guide to Feature Selection in Python</a></p>
-<p>[3] <a href="https://cw.fel.cvut.cz/old/_media/courses/ae3m33ui/lectures/featureselectionshort-handouts.pdf" target="_blank" rel="noopener">Feature selection and extraction</a></p>
-<p>[4] <a href="https://blog.datadive.net/selecting-good-features-part-i-univariate-selection/" target="_blank" rel="noopener">Feature selection – Part I: univariate selection</a></p>
-<p>[5] <a href="https://sebastianraschka.com/faq/docs/feature_sele_categories.html" target="_blank" rel="noopener">What is the difference between filter, wrapper, and embedded methods for feature selection?</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/11/07/%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

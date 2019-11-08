@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="特征选择基于变量的数量进行分类：  Univariate methods, variable ranking: consider the input variables (features, attributes) one by one.  Multivariate methods, variable subset selection: consider whole groups of varia">
+<meta name="description" content="基于变量的数量进行分类：  Univariate methods, variable ranking: consider the input variables (features, attributes) one by one.  Multivariate methods, variable subset selection: consider whole groups of variables">
 <meta property="og:type" content="article">
 <meta property="og:title" content="特征选择">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;07&#x2F;%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9&#x2F;index.html">
 <meta property="og:site_name" content="AiChery">
-<meta property="og:description" content="特征选择基于变量的数量进行分类：  Univariate methods, variable ranking: consider the input variables (features, attributes) one by one.  Multivariate methods, variable subset selection: consider whole groups of varia">
+<meta property="og:description" content="基于变量的数量进行分类：  Univariate methods, variable ranking: consider the input variables (features, attributes) one by one.  Multivariate methods, variable subset selection: consider whole groups of variables">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:&#x2F;&#x2F;res.cloudinary.com&#x2F;dyd911kmh&#x2F;image&#x2F;upload&#x2F;f_auto,q_auto:best&#x2F;v1537552825&#x2F;Image3_fqsh79.png">
-<meta property="og:updated_time" content="2019-11-07T12:22:04.995Z">
+<meta property="og:updated_time" content="2019-11-08T02:40:11.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;res.cloudinary.com&#x2F;dyd911kmh&#x2F;image&#x2F;upload&#x2F;f_auto,q_auto:best&#x2F;v1537552825&#x2F;Image3_fqsh79.png">
 
@@ -299,7 +299,7 @@
       
 
       
-        <h1 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h1><p>基于变量的数量进行分类：</p>
+        <p>基于变量的数量进行分类：</p>
 <ul>
 <li><p>Univariate methods, variable ranking: consider the input variables (features, attributes) one by one.</p>
 </li>
@@ -312,6 +312,8 @@
 <li>包裹式（wrapper）: selects a subset of variables taking into account the model that shall use them.</li>
 <li>嵌入式（embedded）: the feature selection method is built in the ML model (or rather its training algorithm) itself (e.g. decision trees).</li>
 </ul>
+<a id="more"></a>
+
 <h3 id="常用的filter方法"><a href="#常用的filter方法" class="headerlink" title="常用的filter方法"></a>常用的filter方法</h3><p><img src="https://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1537552825/Image3_fqsh79.png" alt=""></p>
 <p>过滤方法使用特定的评估标准，如距离，信息，依赖性和一致性等，对特征进行排序，从而进行进行变量选择，称之为”过滤“。过滤方法通常用作数据预处理步骤。 特征的选择独立于任何机器学习算法。 特征基于统计分数给出排名，统计分数倾向与结果变量相关的特征。</p>
 <h4 id="1-F-Test-ANOVA"><a href="#1-F-Test-ANOVA" class="headerlink" title="1. F Test (ANOVA)"></a>1. F Test (ANOVA)</h4><p>Scikit-learn 提供了 <strong>Selecting K best</strong> 个特征，使用F-test.</p>
@@ -464,7 +466,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#特征选择"><span class="nav-number">1.</span> <span class="nav-text">特征选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的filter方法"><span class="nav-number">1.0.1.</span> <span class="nav-text">常用的filter方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-F-Test-ANOVA"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">1. F Test (ANOVA)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Mutual-Information"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">2. Mutual Information</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的Wrapper方法"><span class="nav-number">1.0.2.</span> <span class="nav-text">常用的Wrapper方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Forward-Search"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">1. Forward Search</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Recursive-Feature-Elimination"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">2. Recursive Feature Elimination</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的Embedded方法"><span class="nav-number">1.0.3.</span> <span class="nav-text">常用的Embedded方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-LASSO-Linear-Regression"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">1. LASSO Linear Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Tree-based-models"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">2. Tree based models</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料："><span class="nav-number">1.0.4.</span> <span class="nav-text">参考资料：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的filter方法"><span class="nav-number">1.</span> <span class="nav-text">常用的filter方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-F-Test-ANOVA"><span class="nav-number">1.1.</span> <span class="nav-text">1. F Test (ANOVA)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Mutual-Information"><span class="nav-number">1.2.</span> <span class="nav-text">2. Mutual Information</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的Wrapper方法"><span class="nav-number">2.</span> <span class="nav-text">常用的Wrapper方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Forward-Search"><span class="nav-number">2.1.</span> <span class="nav-text">1. Forward Search</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Recursive-Feature-Elimination"><span class="nav-number">2.2.</span> <span class="nav-text">2. Recursive Feature Elimination</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的Embedded方法"><span class="nav-number">3.</span> <span class="nav-text">常用的Embedded方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-LASSO-Linear-Regression"><span class="nav-number">3.1.</span> <span class="nav-text">1. LASSO Linear Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Tree-based-models"><span class="nav-number">3.2.</span> <span class="nav-text">2. Tree based models</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料："><span class="nav-number">4.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
             
 
           </div>
