@@ -79,15 +79,17 @@
 
 
 
-<meta name="description" content="谦谦君子，温润如玉">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;tags&#x2F;index.html">
+<meta name="description" content="Attention 机制在近几年来在图像，自然语言处理等领域中都取得了重要的突破，被证明有益于提高模型的性能。Attention 机制本身也是符合人脑和人眼的感知机制，这里我们主要以计算机视觉领域为例，讲述 Attention 机制的原理，应用以及模型的发展。  参考资料：[1] Why, How and When to apply Feature Selection [2] Beginner">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机视觉中的Attention机制">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;08&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E4%B8%AD%E7%9A%84Attention%E6%9C%BA%E5%88%B6&#x2F;index.html">
 <meta property="og:site_name" content="AiChery">
-<meta property="og:description" content="谦谦君子，温润如玉">
+<meta property="og:description" content="Attention 机制在近几年来在图像，自然语言处理等领域中都取得了重要的突破，被证明有益于提高模型的性能。Attention 机制本身也是符合人脑和人眼的感知机制，这里我们主要以计算机视觉领域为例，讲述 Attention 机制的原理，应用以及模型的发展。  参考资料：[1] Why, How and When to apply Feature Selection [2] Beginner">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-08T02:52:40.324Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_01.png">
+<meta property="og:updated_time" content="2019-11-08T03:53:51.534Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_01.png">
 
 
 
@@ -117,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/11/08/计算机视觉中的Attention机制/"/>
 
 
 
 
 
-  <title>tags | AiChery</title>
+  <title>计算机视觉中的Attention机制 | AiChery</title>
   
 
 
@@ -248,40 +250,146 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E4%B8%AD%E7%9A%84Attention%E6%9C%BA%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wei Cheney">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AiChery">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                暂无标签
-            </div>
-            <div class="tag-cloud-tags">
+          <h1 class="post-title" itemprop="name headline">计算机视觉中的Attention机制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
-            </div>
-          </div>
-        
-      </div>
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T11:39:12+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/attention_01.png" alt=""></p>
+<blockquote>
+<p>Attention 机制在近几年来在图像，自然语言处理等领域中都取得了重要的突破，被证明有益于提高模型的性能。Attention 机制本身也是符合人脑和人眼的感知机制，这里我们主要以计算机视觉领域为例，讲述 Attention 机制的原理，应用以及模型的发展。</p>
+</blockquote>
+<h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><p>[1] <a href="https://towardsdatascience.com/why-how-and-when-to-apply-feature-selection-e9c69adfabf2" target="_blank" rel="noopener">Why, How and When to apply Feature Selection</a></p>
+<p>[2] <a href="https://www.datacamp.com/community/tutorials/feature-selection-python" target="_blank" rel="noopener">Beginner’s Guide to Feature Selection in Python</a></p>
+<p>[3] <a href="https://cw.fel.cvut.cz/old/_media/courses/ae3m33ui/lectures/featureselectionshort-handouts.pdf" target="_blank" rel="noopener">Feature selection and extraction</a></p>
+<p>[4] <a href="https://blog.datadive.net/selecting-good-features-part-i-univariate-selection/" target="_blank" rel="noopener">Feature selection – Part I: univariate selection</a></p>
+<p>[5] <a href="https://sebastianraschka.com/faq/docs/feature_sele_categories.html" target="_blank" rel="noopener">What is the difference between filter, wrapper, and embedded methods for feature selection?</a></p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/07/%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/" rel="next" title="特征选择">
+                <i class="fa fa-chevron-left"></i> 特征选择
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -314,8 +422,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -361,6 +478,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料："><span class="nav-number">1.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
