@@ -6,11 +6,8 @@
 	.st0{fill:#2366D1;}
 	.st1{fill:#609DFF;}
 	.st2{fill:#A4C7FF;}
-	.st3{font-family:'AdobeSongStd-Light-GBpc-EUC-H';}
-	.st4{font-size:196.9413px;}
 </style>
 <path class="st0" d="M110.9,128l110.9,64l-110.9,64L0,192L110.9,128z"/>
 <path class="st1" d="M110.9,64l110.9,64l-110.9,64L0,128L110.9,64z"/>
 <path class="st2" d="M110.9,0l110.9,64l-110.9,64L0,64L110.9,0z"/>
-<text transform="matrix(1.0126 0 0 1 270.1475 186.3937)" class="st3 st4">威少</text>
 </svg>
