@@ -61,7 +61,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_01.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_02.png">
-<meta property="og:updated_time" content="2019-11-08T09:06:50.194Z">
+<meta property="og:updated_time" content="2019-11-08T09:15:15.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_01.png">
 
@@ -218,7 +218,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-08 12:26:25 / 修改时间：17:06:50" itemprop="dateCreated datePublished" datetime="2019-11-08T12:26:25+08:00">2019-11-08</time>
+              <time title="创建时间：2019-11-08 12:26:25 / 修改时间：17:15:15" itemprop="dateCreated datePublished" datetime="2019-11-08T12:26:25+08:00">2019-11-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -251,8 +251,8 @@
 <p>在胸部 X 光诊断中，医生通常先整体看片子中是否有问题，然后再集中精力看有病理可能的局部区域，最后再结合整张片观察，确定病理结论。</p>
 <p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/attention_02.png" alt=""></p>
 <p>有两个主要分支， global and local branches，以及 a fusion branch，都是分类网络，可预测图像中是否存在病理。 给定一个图像，首先使用全局图像根据分类CNN对 global branch 进行微调。 然后，我们从全局图像中裁剪出一个 attended region，并对其进行训练以在 local branch 上进行分类。 最后，将 global branch 和 local branch 支的最后一个池化层连接起来，以对 fusion branch 进行微调。</p>
-<p>思路很清晰，接下来重点分析做 attention 的：</p>
-<p>$f_g^k(x,y)​$ </p>
+<p>思路很清晰，接下来重点分析做 attention 的： <script type="math/tex">frfr</script></p>
+<p> $f_g^k(x,y)​$ </p>
 <script type="math/tex; mode=display">
 f(x)=dedec</script><p>未完待续……</p>
 <h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><p>[1] Guan, Qingji, et al. “Diagnose like a radiologist: Attention guided convolutional neural network for thorax disease classification.” <em>arXiv preprint arXiv:1801.09927</em> (2018). <a href="https://arxiv.org/abs/1801.09927" target="_blank" rel="noopener">https://arxiv.org/abs/1801.09927</a></p>
