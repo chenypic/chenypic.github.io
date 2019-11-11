@@ -60,7 +60,9 @@
 <meta property="og:description" content="计算机视觉领域关于自注意力机制的一篇重要文章。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_05.png">
-<meta property="og:updated_time" content="2019-11-11T03:56:23.897Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_06.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_07.png">
+<meta property="og:updated_time" content="2019-11-11T04:06:29.595Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_05.png">
 
@@ -222,7 +224,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-11 10:19:11 / 修改时间：11:56:23" itemprop="dateCreated datePublished" datetime="2019-11-11T10:19:11+08:00">2019-11-11</time>
+              <time title="创建时间：2019-11-11 10:19:11 / 修改时间：12:06:29" itemprop="dateCreated datePublished" datetime="2019-11-11T10:19:11+08:00">2019-11-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -351,7 +353,26 @@ f(\textbf x_i, \textbf x_j) = \text{ReLU} (\textbf w_f^T[\theta(\textbf x_i), \p
 <li>$\mathcal C(\textbf x) = N$: </li>
 <li>在这里 $f$ 多采用了一个 ReLU</li>
 </ul>
-<h3 id="3-3-Non-local-Block"><a href="#3-3-Non-local-Block" class="headerlink" title="3.3. Non-local Block"></a>3.3. Non-local Block</h3><p>参考资料:</p>
+<h3 id="3-3-Non-local-Block"><a href="#3-3-Non-local-Block" class="headerlink" title="3.3. Non-local Block"></a>3.3. Non-local Block</h3><p>我们将式 (1) 中的 non-local operation 包装到 non-local block 中，该 block 可以合并到许多现有体系的架构中，non-local block 定义如下：</p>
+<script type="math/tex; mode=display">
+\textbf z_i = W_z \textbf y_i + \textbf x_i, \tag{6}</script><p>应用了残差结构，可以在任何事先训练好的 model 插入一个 non-local block。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/attention_06.png" alt="img"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Figure 2. A spacetime <strong>non-local block</strong>. The feature maps are shown as the shape of their tensors, e.g., $T \times H \times W \times 1024$ for $1024$ channels (proper reshaping is performed when noted). “$\otimes$” denotes matrix multiplication, and “$\oplus$” denotes element-wise sum. The softmax operation is performed on each row. The blue boxes denote $1 \times 1 \times 1$ convolutions. Here we show the embedded Gaussian version, with a bottleneck of $512$ channels. The vanilla Gaussian version can be done by removing $\theta$ and $\phi$, and the dot-product version can be done by replacing softmax with scaling by $1 / N$.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> <a href="https://walkccc.github.io/blog/2018/10/27/Papers/nonlocal-nn/" target="_blank" rel="noopener">博客</a> 画了一个示意图：</p>
+<p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/attention_07.png" alt=""></p>
+<p>参考资料:</p>
 <p>[1] <a href="https://arxiv.org/abs/1711.07971" target="_blank" rel="noopener">Non-local Neural Networks</a></p>
 <p>[2] <a href="https://walkccc.github.io/blog/2018/10/27/Papers/nonlocal-nn/" target="_blank" rel="noopener">論文筆記 Non-local Neural Networks</a></p>
 
