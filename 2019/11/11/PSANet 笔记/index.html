@@ -60,7 +60,9 @@
 <meta property="og:description" content="作者认为CNN中信息流被约束在 local neighborhood regions，限制了复杂场景的理解。因此提出了 point-wise spatial attention network (PSANet) 来缓和这种  local neighborhood constraint。通过 self-adaptively learned attention mask，将feature map 中">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_13.png">
-<meta property="og:updated_time" content="2019-11-11T13:12:08.390Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_14.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_13.png">
+<meta property="og:updated_time" content="2019-11-11T14:13:25.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_13.png">
 
@@ -222,7 +224,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-11 16:37:44 / 修改时间：21:12:08" itemprop="dateCreated datePublished" datetime="2019-11-11T16:37:44+08:00">2019-11-11</time>
+              <time title="创建时间：2019-11-11 16:37:44 / 修改时间：22:13:25" itemprop="dateCreated datePublished" datetime="2019-11-11T16:37:44+08:00">2019-11-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,6 +259,41 @@
         <p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/attention_13.png" alt=""></p>
 <p>作者认为CNN中信息流被约束在 local neighborhood regions，限制了复杂场景的理解。因此提出了 point-wise spatial attention network (PSANet) 来缓和这种  local neighborhood constraint。通过 self-adaptively learned attention mask，将feature map 中的每个位置与其余位置联系起来。此外，还能够进行双向信息传播以进行 scene parsing。可以收集其他位置的信息以帮助预测当前位置，反之亦然，可以分发当前位置的信息以辅助预测其他位置。</p>
 <a id="more"></a>
+<p>ECCV2018的文章：</p>
+<p><a href="https://hszhao.github.io/papers/eccv18_psanet.pdf" target="_blank" rel="noopener">论文地址</a></p>
+<p><a href="https://github.com/hszhao/semseg" target="_blank" rel="noopener">代码PyTorch</a></p>
+<p>通过 PSA 学习到的 masks 是自适应的，对位置和类别信息很敏感。</p>
+<p>为了捕获 contextual information，尤其是 long range 的， information aggregation对于场景解析非常重要，如Parsenet，Deeplab，PSPNet，Reseg等网络结构。在本文中，作者将 information aggregation 视为一种 information flow，并提出对每个 position 自适应地学习 pixel-wise global attention map，才能够 2 个角度 aggregate contextual information.</p>
+<script type="math/tex; mode=display">
+\textbf z_i = \frac{1}{N} \sum_{\forall j \in \Omega {i}}F(\textbf x_i,\textbf x_j,\Delta_{ij}) \textbf x_j   \tag{1}</script><ul>
+<li>$\textbf z_i$:  the newly aggregated feature at position $i$.</li>
+<li>$\textbf x_i$:  featurer epresentation at position $i$ in the input feature map.</li>
+<li>$\forall j \in \Omega {i}$: enumeratesa all positions in the region of interest associated with $i$.</li>
+<li>$\Delta_{ij}​$: relative location of position $i​$ and $j​$.</li>
+<li>$F(\textbf x_i,\textbf x_j,\Delta_{ij})​$:  any function or learnedp arameters according to the operation and it represents the information flow from $j​$ to $i​$.</li>
+</ul>
+<p>因为考虑了相对位置 $\Delta_{ij}$，$F(\textbf x_i,\textbf x_j,\Delta_{ij})$ 对不用的相对位置是敏感的。可以简化之：</p>
+<script type="math/tex; mode=display">
+\textbf z_i = \frac{1}{N} \sum_{\forall j \in \Omega {i}}F_{\Delta_{ij}}(\textbf x_i,\textbf x_j) \textbf x_j   \tag{2}</script><ul>
+<li>$\{F_{\Delta_{ij}}\}​$:  a set of position-specific functions.</li>
+</ul>
+<p>建模了从位置 $j​$ 到位置 $i​$ 的信息流。$F_{\Delta_{ij}}(\cdot,\cdot)​$ 的输入包括  source and target information. 当 feature maps中有许多 position 时，组合 $(\textbf x_i,\textbf x_j)​$ 是非常 large 的，因此，作者简化并做了近似。</p>
+<p>首先，simplify $F_{\Delta_{ij}}(\cdot,\cdot)$ as</p>
+<script type="math/tex; mode=display">
+F_{\Delta_{ij}}(\textbf x_i,\textbf x_j) \approx F_{\Delta_{ij}}(\textbf x_i) \tag{3}</script><p>公式（2）可重写为</p>
+<script type="math/tex; mode=display">
+\textbf z_i = \frac{1}{N} \sum_{\forall j \in \Omega {i}}F_{\Delta_{ij}}(\textbf x_i) \textbf x_j   \tag{4}</script><p>也可以这样简化：</p>
+<script type="math/tex; mode=display">
+F_{\Delta_{ij}}(\textbf x_i,\textbf x_j) \approx F_{\Delta_{ij}}(\textbf x_j) \tag{5}</script><p>最终可以简化为 bi-direction information propagation path</p>
+<script type="math/tex; mode=display">
+F_{\Delta_{ij}}(\textbf x_i,\textbf x_j) \approx F_{\Delta_{ij}}(\textbf x_i) +F_{\Delta_{ij}}(\textbf x_j)  \tag{3}</script><p>最终，we model this bi-direction information propagation as</p>
+<script type="math/tex; mode=display">
+\textbf z_i = \frac{1}{N} \sum_{\forall j \in \Omega {i}}F_{\Delta_{ij}}(\textbf x_i) \textbf x_j  + \frac{1}{N} \sum_{\forall j \in \Omega {i}}F_{\Delta_{ij}}(\textbf x_j) \textbf x_j  \tag{7}</script><p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/attention_14.png" alt=""></p>
+<p>Specifically, our PSA module, aiming to adaptively predict the information flow over the entire feature map, takes all the positions in feature map as $\Omega(i)​$ and  utilizes the convolutional layer as the operation of $F_{\Delta_{ij}}(\textbf x_i)​$ and $F_{\Delta_{ij}}(\textbf x_j)​$. Both $F_{\Delta_{ij}}(\textbf x_i)​$ and $F_{\Delta_{ij}}(\textbf x_j)​$ can then be regarded as predicted attention values<br>to aggregate feature $\textbf x_j​$. We further rewrite Eq. (7) as</p>
+<script type="math/tex; mode=display">
+\textbf z_i = \frac{1}{N} \sum_{\forall j} \textbf a^c_{i,j} \textbf x_j  + \frac{1}{N} \sum_{\forall j}\textbf a^d_{i,j}\textbf x_j  \tag{8}</script><p>where $\textbf a^c_{i,j}$ and $\textbf a^d_{i,j}$ denote the predicted attention values in the point-wise attention maps $\textbf A^c$ and $\textbf A^d$ from ‘collect’ and ‘distribute’ branches, respectively.</p>
+<p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/attention_13.png" alt=""></p>
+
     </div>
 
     
