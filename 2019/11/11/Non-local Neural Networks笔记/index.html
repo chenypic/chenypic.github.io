@@ -60,7 +60,7 @@
 <meta property="og:description" content="计算机视觉领域关于自注意力机制的一篇重要文章。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_05.png">
-<meta property="og:updated_time" content="2019-11-11T02:50:47.144Z">
+<meta property="og:updated_time" content="2019-11-11T02:57:26.813Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_05.png">
 
@@ -222,7 +222,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-11 10:19:11 / 修改时间：10:50:47" itemprop="dateCreated datePublished" datetime="2019-11-11T10:19:11+08:00">2019-11-11</time>
+              <time title="创建时间：2019-11-11 10:19:11 / 修改时间：10:57:26" itemprop="dateCreated datePublished" datetime="2019-11-11T10:19:11+08:00">2019-11-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,7 +270,13 @@
 </tbody>
 </table>
 </div>
-<p>如上图所示，本文提出了 <em>non-local</em> operations ，一个 non-local 的值 $x_i $ 来自作为输入 input feature maps 中所有位置 $x_j $ 的加权和。</p>
+<p>如上图所示，本文提出了 <em>non-local</em> operations ，一个 non-local 的值 $x_i $ 来自作为输入 input feature maps 中所有位置 $x_j ​$ 的加权和。</p>
+<p>使用 non-local operations 的几个优点：</p>
+<ul>
+<li>通过计算任意两个位置间的interactions，non-local operations 可以直接捕获其  long-range dependencies，无关它们之间的距离。</li>
+<li>非常高效，即使只有几层也能取得很好的效果。</li>
+<li>non-local operations 保持了输入大小，可以很容易地结合到其它网络中。</li>
+</ul>
 <p>参考资料:</p>
 <p>[1] <a href="https://walkccc.github.io/blog/2018/10/27/Papers/nonlocal-nn/" target="_blank" rel="noopener">論文筆記 Non-local Neural Networks</a></p>
 
