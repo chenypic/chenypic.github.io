@@ -59,7 +59,7 @@
 <meta property="og:site_name" content="AiChery">
 <meta property="og:description" content="计算机视觉领域关于自注意力机制的一篇重要文章。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-11T02:21:05.962Z">
+<meta property="og:updated_time" content="2019-11-11T02:40:58.236Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2019/11/11/Non-local%20Neural%20Networks%E7%AC%94%E8%AE%B0/">
@@ -220,7 +220,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-11 10:19:11 / 修改时间：10:21:05" itemprop="dateCreated datePublished" datetime="2019-11-11T10:19:11+08:00">2019-11-11</time>
+              <time title="创建时间：2019-11-11 10:19:11 / 修改时间：10:40:58" itemprop="dateCreated datePublished" datetime="2019-11-11T10:19:11+08:00">2019-11-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -247,6 +247,36 @@
       
         <p>计算机视觉领域关于自注意力机制的一篇重要文章。</p>
 <a id="more"></a>
+<p>CNN和 RNN 每次计算只能处理一个 local neighborhood，Non-local Neural Networks 提出了 non-local operations 的想法，以捕获  long-range dependencies. Non-local operation 在计算某个位置的 response 时，考虑所有位置，并进行加和权重。次方法解决了解決即使相距很远的的 blocks，仍然有可能是彼此有关系的。</p>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><p>CNN和 RNN 每次计算只能处理一个 local neighborhood, 想要捕捉 long-range dependencies，必须使用很深的网络，造成：</p>
+<ul>
+<li>计算不够高效</li>
+<li>难以优化</li>
+<li>non-local 特征讯息传递不灵活</li>
+</ul>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src = "https://blog-1253296122.cos.ap-chengdu.myqcloud.com/attention_05.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">Figure 1. A spacetime **non-local** operation in our network trained for video classification in Kinetics. A position xixi's response is computed by the weighted average of the features of *all* positions xjxj (only the highest weighted ones are shown here). In this example computed by our model, note how it relates the ball in the first frame to the ball in the last two frames. More examples are in Figure 3.</div>
+</center>
+
+
+
+
+
+
+
+
+
+
+<p>参考资料:</p>
+<p>[1] <a href="https://walkccc.github.io/blog/2018/10/27/Papers/nonlocal-nn/" target="_blank" rel="noopener">論文筆記 Non-local Neural Networks</a></p>
+
     </div>
 
     
@@ -330,6 +360,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Introduction"><span class="nav-number">1.</span> <span class="nav-text">1. Introduction</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
