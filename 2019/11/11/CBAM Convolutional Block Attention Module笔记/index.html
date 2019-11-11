@@ -51,15 +51,15 @@
   };
 </script>
 
-  <meta name="description" content="给定一个中间的 feature map, 可以从channel 和 spatial 2 个维度推理 attention maps，然后，这些 attention maps 通过相乘以自使用的进行特征增强。">
+  <meta name="description" content="给定一个中间的 feature map, 可以从channel 和 spatial 2 个维度推理 attention maps，然后，这些 attention maps 通过相乘以自适应地进行特征增强。">
 <meta name="keywords" content="attention">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CBAM Convolutional Block Attention Module笔记">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;11&#x2F;CBAM%20Convolutional%20Block%20Attention%20Module%E7%AC%94%E8%AE%B0&#x2F;index.html">
 <meta property="og:site_name" content="AiChery">
-<meta property="og:description" content="给定一个中间的 feature map, 可以从channel 和 spatial 2 个维度推理 attention maps，然后，这些 attention maps 通过相乘以自使用的进行特征增强。">
+<meta property="og:description" content="给定一个中间的 feature map, 可以从channel 和 spatial 2 个维度推理 attention maps，然后，这些 attention maps 通过相乘以自适应地进行特征增强。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-11T06:07:57.863Z">
+<meta property="og:updated_time" content="2019-11-11T06:18:45.952Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2019/11/11/CBAM%20Convolutional%20Block%20Attention%20Module%E7%AC%94%E8%AE%B0/">
@@ -220,7 +220,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-11 14:03:16 / 修改时间：14:07:57" itemprop="dateCreated datePublished" datetime="2019-11-11T14:03:16+08:00">2019-11-11</time>
+              <time title="创建时间：2019-11-11 14:03:16 / 修改时间：14:18:45" itemprop="dateCreated datePublished" datetime="2019-11-11T14:03:16+08:00">2019-11-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -245,8 +245,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>给定一个中间的 feature map, 可以从channel 和 spatial 2 个维度推理 attention maps，然后，这些 attention maps 通过相乘以自使用的进行特征增强。</p>
+        <p>给定一个中间的 feature map, 可以从channel 和 spatial 2 个维度推理 attention maps，然后，这些 attention maps 通过相乘以自适应地进行特征增强。</p>
 <a id="more"></a>
+<p>Attention 不仅可以告诉我们关注的重点，还可以改善感兴趣的表示方式。</p>
+<p>本文的目标就是通过 attention mechanism 提高  representation power: 专注于有用的信息，抑制无用的信息。</p>
 
     </div>
 
