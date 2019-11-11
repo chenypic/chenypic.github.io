@@ -60,7 +60,7 @@
 <meta property="og:description" content="计算机视觉领域关于自注意力机制的一篇重要文章。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_05.png">
-<meta property="og:updated_time" content="2019-11-11T02:57:26.813Z">
+<meta property="og:updated_time" content="2019-11-11T03:16:18.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_05.png">
 
@@ -222,7 +222,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-11 10:19:11 / 修改时间：10:57:26" itemprop="dateCreated datePublished" datetime="2019-11-11T10:19:11+08:00">2019-11-11</time>
+              <time title="创建时间：2019-11-11 10:19:11 / 修改时间：11:16:18" itemprop="dateCreated datePublished" datetime="2019-11-11T10:19:11+08:00">2019-11-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -277,8 +277,14 @@
 <li>非常高效，即使只有几层也能取得很好的效果。</li>
 <li>non-local operations 保持了输入大小，可以很容易地结合到其它网络中。</li>
 </ul>
+<h2 id="2-Related-Work"><a href="#2-Related-Work" class="headerlink" title="2. Related Work"></a>2. Related Work</h2><p><strong>Non-local image processing. </strong> 来源于 Non-local means。</p>
+<p><strong>Graphical models.</strong> 可以通过图模型，如CRF，来捕获 long-range dependencies，CRF可以作为后处理步骤，也可以融合到RNN中。但是本文的方法更加简单，也与图神经网络有关系。</p>
+<p><strong>Feedforward modeling for sequences.</strong> Recently there emerged a trend of using feedforward (i.e., non-recurrent) networks for modeling sequences in speech and language. In these methods, long-term dependencies are captured by the large receptive fields contributed by very deep 1-D convolutions. These feedforward models are amenable to parallelized implementations and can be more<br>efficient than widely used recurrent models.</p>
+<p><strong>Self-attention.</strong> 本文方法与 <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">self-attention</a> 方法有关，self-attention 模块通过考虑所有位置并在 embedding space 中获取它们的加权平均值，来计算序列（例如句子）中某个位置的响应。作者在后面有讨论， self-attention 可以视为某种形式的 <a href="https://ieeexplore.ieee.org/document/1467423" target="_blank" rel="noopener">non-local mean</a>, 从这角度来说，将机器翻译中的  self-attention 机制扩展到 CV 领域。</p>
+<p><strong>Interaction networks.</strong> </p>
 <p>参考资料:</p>
-<p>[1] <a href="https://walkccc.github.io/blog/2018/10/27/Papers/nonlocal-nn/" target="_blank" rel="noopener">論文筆記 Non-local Neural Networks</a></p>
+<p>[1] <a href="https://arxiv.org/abs/1711.07971" target="_blank" rel="noopener">Non-local Neural Networks</a></p>
+<p>[2] <a href="https://walkccc.github.io/blog/2018/10/27/Papers/nonlocal-nn/" target="_blank" rel="noopener">論文筆記 Non-local Neural Networks</a></p>
 
     </div>
 
@@ -363,7 +369,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Introduction"><span class="nav-number">1.</span> <span class="nav-text">1. Introduction</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Introduction"><span class="nav-number">1.</span> <span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Related-Work"><span class="nav-number">2.</span> <span class="nav-text">2. Related Work</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
