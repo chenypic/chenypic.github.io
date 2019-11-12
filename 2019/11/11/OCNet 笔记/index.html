@@ -60,7 +60,7 @@
 <meta property="og:description" content="将object context (spatial attention) 和卷积强强联合，分别捕捉全局和局部信息，并在多个数据集上取得很高的精度。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_15.png">
-<meta property="og:updated_time" content="2019-11-11T14:46:41.866Z">
+<meta property="og:updated_time" content="2019-11-12T02:09:45.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_15.png">
 
@@ -220,10 +220,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-11-11 22:44:33 / 修改时间：22:46:41" itemprop="dateCreated datePublished" datetime="2019-11-11T22:44:33+08:00">2019-11-11</time>
+              <time title="创建时间：2019-11-11 22:44:33" itemprop="dateCreated datePublished" datetime="2019-11-11T22:44:33+08:00">2019-11-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-12 10:09:45" itemprop="dateModified" datetime="2019-11-12T10:09:45+08:00">2019-11-12</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -257,6 +263,23 @@
         <p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/attention_15.png" alt=""></p>
 <p>将object context (spatial attention) 和卷积强强联合，分别捕捉全局和局部信息，并在多个数据集上取得很高的精度。</p>
 <a id="more"></a>
+<p><a href="https://arxiv.org/abs/1809.00916" target="_blank" rel="noopener">论文地址</a></p>
+<p><a href="https://github.com/PkuRainBow/OCNet.pytorch" target="_blank" rel="noopener">代码PyTorch</a></p>
+<p>PSPNet 和 ASPP 等网络的 patial context 是可能属于不同类别的像素的混合，稳定性不够好。</p>
+<p>作者为每个像素提出一个 object context，是与它同类的像素点的集合。作者提出了一个新的  object context pooling (OCP)，aggregate the information according to the object context. 对每个 像素 $p$ 计算一个  similarity map，其中每个 similarity score 指示了相应的像素和 $p​$ 属于同一类的 degree.</p>
+<p>作者利用  object context 来更新每个像素的表示，object context pooling 的实现来源于 self-attention approach。</p>
+<p>语义分割有 2 大挑战：</p>
+<ul>
+<li>resolution</li>
+<li>multi-scale</li>
+</ul>
+<p>object context pooling 包括 2 个重要的步骤：</p>
+<p><strong><em>Object context estimation.</em></strong> 计算一个 object context map，$\textbf w_p$, 表示每个像素与 $p$ 属于同一类的自由度。</p>
+<script type="math/tex; mode=display">
+w_{pi}= \frac{1}{Z_p}\exp (f_q(\textbf x_p)^Tf_k(\textbf x_i)) \tag{1}</script><p>$f_q(\cdot)$ 和 $f_k(\cdot)$ 分别表示  query 和 key.</p>
+<p><strong><em>Object context aggregation.</em></strong> </p>
+<script type="math/tex; mode=display">
+\textbf c_p = \sum_{i=1}^N w_{pi}\phi(\textbf x_i)  \tag{2}</script><p>$\phi (\cdot)$  is the value transform function following thes elf-attention.</p>
 
     </div>
 
