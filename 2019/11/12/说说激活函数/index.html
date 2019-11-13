@@ -51,16 +51,18 @@
   };
 </script>
 
-  <meta name="description" content="谦谦君子，温润如玉">
-<meta property="og:type" content="website">
-<meta property="og:title" content="AiChery">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;categories&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89&#x2F;index.html">
+  <meta name="description" content="说说激活函数。">
+<meta name="keywords" content="machine learning,deep learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="说说激活函数">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;12&#x2F;%E8%AF%B4%E8%AF%B4%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0&#x2F;index.html">
 <meta property="og:site_name" content="AiChery">
-<meta property="og:description" content="谦谦君子，温润如玉">
+<meta property="og:description" content="说说激活函数。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-13T03:47:05.210Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">
+<link rel="canonical" href="http://yoursite.com/2019/11/12/%E8%AF%B4%E8%AF%B4%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/">
 
 
 <script id="page-configurations">
@@ -68,13 +70,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>分类: 计算机视觉 | AiChery</title>
+  <title>说说激活函数 | AiChery</title>
   
 
 
@@ -189,194 +191,137 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">计算机视觉
-          <small>分类</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/12/%E8%AF%B4%E8%AF%B4%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/avatar.jpg">
+      <meta itemprop="name" content="Wei Cheney">
+      <meta itemprop="description" content="谦谦君子，温润如玉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AiChery">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          说说激活函数
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-12 17:13:32" itemprop="dateCreated datePublished" datetime="2019-11-12T17:13:32+08:00">2019-11-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-13 11:47:05" itemprop="dateModified" datetime="2019-11-13T11:47:05+08:00">2019-11-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-12T17:13:32+08:00"
-              content="2019-11-12">
-          11-12
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/11/12/%E5%8C%BB%E5%AD%A6%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E8%B5%84%E6%96%99/" itemprop="url">
-            <span itemprop="name">医学图像处理资料</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-11T22:44:33+08:00"
-              content="2019-11-11">
-          11-11
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/11/11/OCNet%20%E7%AC%94%E8%AE%B0/" itemprop="url">
-            <span itemprop="name">OCNet 笔记</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-11T16:37:44+08:00"
-              content="2019-11-11">
-          11-11
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/11/11/PSANet%20%E7%AC%94%E8%AE%B0/" itemprop="url">
-            <span itemprop="name">PSANet 笔记</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-11T15:21:22+08:00"
-              content="2019-11-11">
-          11-11
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/11/11/Compact%20Generalized%20Non-local%20Network%20%E7%AC%94%E8%AE%B0/" itemprop="url">
-            <span itemprop="name">Compact Generalized Non-local Network 笔记</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-11T14:03:16+08:00"
-              content="2019-11-11">
-          11-11
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/11/11/CBAM%20Convolutional%20Block%20Attention%20Module%E7%AC%94%E8%AE%B0/" itemprop="url">
-            <span itemprop="name">CBAM Convolutional Block Attention Module笔记</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-11T10:19:11+08:00"
-              content="2019-11-11">
-          11-11
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/11/11/Non-local%20Neural%20Networks%E7%AC%94%E8%AE%B0/" itemprop="url">
-            <span itemprop="name">Non-local Neural Networks笔记</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-08T12:26:25+08:00"
-              content="2019-11-08">
-          11-08
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/11/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E4%B8%AD%E7%9A%84Attention%E6%9C%BA%E5%88%B6/" itemprop="url">
-            <span itemprop="name">计算机视觉中的Attention机制</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-07T12:26:25+08:00"
-              content="2019-11-07">
-          11-07
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/11/07/%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/" itemprop="url">
-            <span itemprop="name">特征选择</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
+        <p>说说激活函数。</p>
+<a id="more"></a>
+<p><a href="https://zh.wikipedia.org/wiki/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">wiki介绍</a> </p>
 
     </div>
+
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Wei Cheney 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Wei Cheney 支付宝">
+        <p>支付宝</p>
+      </div>
+
   </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+              <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/12/%E5%8C%BB%E5%AD%A6%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E8%B5%84%E6%96%99/" rel="next" title="医学图像处理资料">
+                  <i class="fa fa-chevron-left"></i> 医学图像处理资料
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
   
   
   
 
-  
-
+  </div>
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
         </div>
           
@@ -556,6 +501,23 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'b518bd54c879c20706b4',
+      clientSecret: 'f601dee7ed1d248ae971191226d140acbb9ca107',
+      repo: 'PingLun',
+      owner: 'chenypic',
+      admin: ['chenypic'],
+      id: '92bd035ba9b402438178ce489c2b4e7e',
+        language: '',
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
 
 </body>
 </html>
