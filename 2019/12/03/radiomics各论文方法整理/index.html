@@ -64,7 +64,11 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;radiomics_review_03.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;radiomics_review_04.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;radiomics_review_05.png">
-<meta property="og:updated_time" content="2019-12-03T13:14:24.967Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;radiomics_review_06.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;radiomics_review_07.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;radiomics_review_08.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;radiomics_review_09.png">
+<meta property="og:updated_time" content="2019-12-04T02:12:58.048Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;radiomics_review_02.png">
 
@@ -224,10 +228,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-12-03 21:07:44 / 修改时间：21:14:24" itemprop="dateCreated datePublished" datetime="2019-12-03T21:07:44+08:00">2019-12-03</time>
+              <time title="创建时间：2019-12-03 21:07:44" itemprop="dateCreated datePublished" datetime="2019-12-03T21:07:44+08:00">2019-12-03</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-04 10:12:58" itemprop="dateModified" datetime="2019-12-04T10:12:58+08:00">2019-12-04</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -299,6 +309,30 @@
 <p>样本数量：245 patients with HGSOC from two hospitals, which included a feature-learning cohort (n = 102), a primary cohort (n = 49) and two independent validation cohorts from two hospitals (n = 49 and n = 45).</p>
 <p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/radiomics_review_05.png" alt=""></p>
 <p>做了一个 auto-encoder，提取中间层的数据作为特征进行分析。</p>
+<h2 id="Z-Qian-et-al-2019-Differentiation-of-glioblastoma"><a href="#Z-Qian-et-al-2019-Differentiation-of-glioblastoma" class="headerlink" title="Z. Qian et al., 2019 Differentiation of glioblastoma"></a>Z. Qian <em>et al.</em>, 2019 Differentiation of glioblastoma</h2><blockquote>
+<p>Z. Qian <em>et al.</em>, “Differentiation of glioblastoma from solitary brain metastases using radiomic machine-learning classifiers,” <em>Cancer Letters</em>, vol. 451, pp. 128–135, Jun. 2019.</p>
+</blockquote>
+<p>研究目的：术前区分确定术前将胶质母细胞瘤（GBM）与孤立性脑转移瘤（MET）。</p>
+<p>样本数量：412个样本（242个GBM，170个MET）分成训练集（227）和测试集（185）。</p>
+<p>特征提取：</p>
+<ul>
+<li>使用了PyRadiomics库。将所有的图像归一化到0-100像素内，并重采样到3mm的分辨率。提取了1303个特征。2个医生画的roi区域，分别提取特征，ICCs大于0.8的保留（898个），然后选择其中年长的医生提取的特征进行分析。构建了一个无监督k均值聚类，大概看看GBM和MET可不可分。</li>
+</ul>
+<p>模型构造：</p>
+<ul>
+<li><p>12种特征选择方法。（使用了R和python）</p>
+<p>EUDT_38, FAOV_41, GNRO_17, IFGN_31, LASSO_24,LG_4, MUIF_35, RELF_17, RF_43, SVM_3, TSCR_50, and WLCX_46.</p>
+</li>
+<li><p>7个分类器。（sklearn）在训练集中做5折交叉验证，在训练集中AUC≥0.95 和 RSD≤6 的分类器，和在测试集中 AUC 最高的 model 最为最终考虑的 model.</p>
+</li>
+</ul>
+<p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/radiomics_review_06.png" alt=""></p>
+<ul>
+<li>根据交叉验证的结果，选择了 13 个 model，然后应用于 test 数据集。LASSO_SVM效果最好。还与医生的诊断结果进行了对比。</li>
+</ul>
+<p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/radiomics_review_07.png" alt=""></p>
+<p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/radiomics_review_08.png" alt=""></p>
+<p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/radiomics_review_09.png" alt=""></p>
 <p>持续更新……</p>
 
     </div>
@@ -384,7 +418,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Y-Zhu-et-al-2019-A-deep-learning-radiomics-model"><span class="nav-number">1.</span> <span class="nav-text">Y. Zhu et al 2019 A deep learning radiomics model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Liu-et-al-2018-Development-and-validation-of-a-radiomics-signature"><span class="nav-number">2.</span> <span class="nav-text">F. Liu et al., 2018 Development and validation of a radiomics signature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S-Wang-et-al-2019-Deep-learning-provides-a-new-computed"><span class="nav-number">3.</span> <span class="nav-text">S. Wang *et al 2019 Deep learning provides a new computed</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Y-Zhu-et-al-2019-A-deep-learning-radiomics-model"><span class="nav-number">1.</span> <span class="nav-text">Y. Zhu et al 2019 A deep learning radiomics model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Liu-et-al-2018-Development-and-validation-of-a-radiomics-signature"><span class="nav-number">2.</span> <span class="nav-text">F. Liu et al., 2018 Development and validation of a radiomics signature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S-Wang-et-al-2019-Deep-learning-provides-a-new-computed"><span class="nav-number">3.</span> <span class="nav-text">S. Wang *et al 2019 Deep learning provides a new computed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Z-Qian-et-al-2019-Differentiation-of-glioblastoma"><span class="nav-number">4.</span> <span class="nav-text">Z. Qian et al., 2019 Differentiation of glioblastoma</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
