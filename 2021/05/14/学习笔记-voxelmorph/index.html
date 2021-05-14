@@ -59,7 +59,7 @@
 <meta property="og:description" content="voxelmorph学习笔记">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;2021%E5%B9%B45%E6%9C%8814%E6%97%A5&#x2F;voxelmorph_1.png">
-<meta property="og:updated_time" content="2021-05-14T15:28:34.000Z">
+<meta property="og:updated_time" content="2021-05-14T15:36:59.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;2021%E5%B9%B45%E6%9C%8814%E6%97%A5&#x2F;voxelmorph_1.png">
 
@@ -221,7 +221,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-05-14 17:46:26 / 修改时间：23:28:34" itemprop="dateCreated datePublished" datetime="2021-05-14T17:46:26+08:00">2021-05-14</time>
+              <time title="创建时间：2021-05-14 17:46:26 / 修改时间：23:36:59" itemprop="dateCreated datePublished" datetime="2021-05-14T17:46:26+08:00">2021-05-14</time>
             </span>
 
           
@@ -248,7 +248,8 @@
 <script type="math/tex; mode=display">
 \begin{align*} \widehat {\phi }=&\mathop {\mathrm {arg\,min}} _{\phi }\mathcal {L}(f, m, {\phi }) \tag{1}\\=&\mathop {\mathrm {arg\,min}} _{\phi } \mathcal {L}_{sim}(f, m\circ {\phi }) + \lambda \mathcal {L}_{smooth}({\phi }),\tag{2}\end{align*}</script><p>通常，$\phi$ 可以是 displacement vector field $\mathbf{u}$，指定了 $f$ 到 $m$ 的 vector offset：${\phi }= Id + \mathbf{u}$.</p>
 <p>传统算法针对每个 volume pair 优化公式（1）。 相反，我们假设可以通过数据的参数化函数来计算 a field。 我们通过最小化体积对数据集上的（1）形式的期望能量来优化函数参数。 从本质上讲，我们用共享参数的全局优化来代替变形场的特定于对的优化，在其他领域，这被称为amortization。 一旦估计了全局函数，就可以通过在给定的体积对上评估函数来产生一个场。 在本文中，我们使用 displacement-based vector field representation，并着重于学习框架的各个方面及其优势。 但是，我们最近证明了在类似于VoxelMorph的框架中也可以进行 velocity-based representations.</p>
-<p>使用 CNN 建模一个函数 $g_{\theta }(f, m) = \mathbf {u}$，其中，$\theta$ 是 CNN 的参数，displacement field $\mathbf{u}$ 存储于一个 ${n+1}$-维 的图像中。也就是说，对于每个像素 $\mathbf {p} \in \Omega$，$\mathbf {u}~(\mathbf {p})$ 是一个 displacement，that $f(\mathbf{p})$ 和 $<a href="\mathbf {p}">m\circ {\phi}</a>$ 对应于相似解剖位置，其中，${\phi }= Id + \mathbf{u}$ 由 一个 identity transform 和 $\mathbf{u}$ 构成。<br><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/2021%E5%B9%B45%E6%9C%8814%E6%97%A5/voxelmorph_1.png" alt=""></p>
+<p>使用 CNN 建模一个函数 $g_{\theta }(f, m) = \mathbf {u}$，其中，$\theta$ 是 CNN 的参数，displacement field $\mathbf{u}$ 存储于一个 ${n+1}$-维 的图像中。也就是说，对于每个像素 $\mathbf {p} \in \Omega$，$\mathbf {u}~(\mathbf {p})$ 是一个 displacement，that $f(\mathbf{p})$ 和 $[m\circ{\phi}] \mathbf{(p)}$ 对应于相似解剖位置，其中，${\phi }= Id + \mathbf{u}$ 由 一个 identity transform 和 $\mathbf{u}$ 构成。<br><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/2021%E5%B9%B45%E6%9C%8814%E6%97%A5/voxelmorph_1.png" alt=""></p>
+<p>作者提出了两个无监督的损失函数。 第一个捕获 image similarity 和 field smoothness，而第二个也利用解剖学分割。 </p>
 
     </div>
 
