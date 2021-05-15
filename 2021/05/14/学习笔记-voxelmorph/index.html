@@ -60,7 +60,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;2021%E5%B9%B45%E6%9C%8814%E6%97%A5&#x2F;voxelmorph_1.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;2021%E5%B9%B45%E6%9C%8814%E6%97%A5&#x2F;voxelmorph_2.png">
-<meta property="og:updated_time" content="2021-05-15T03:29:52.112Z">
+<meta property="og:updated_time" content="2021-05-15T03:34:29.702Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;2021%E5%B9%B45%E6%9C%8814%E6%97%A5&#x2F;voxelmorph_1.png">
 
@@ -228,7 +228,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-15 11:29:52" itemprop="dateModified" datetime="2021-05-15T11:29:52+08:00">2021-05-15</time>
+                <time title="修改时间：2021-05-15 11:34:29" itemprop="dateModified" datetime="2021-05-15T11:34:29+08:00">2021-05-15</time>
               </span>
 
           
@@ -274,10 +274,12 @@
 <script type="math/tex; mode=display">
 \begin{equation*} \mathcal {L}_{us}(f, m, {\phi }) = \mathcal {L}_{sim}(f, m\circ {\phi }) + \lambda \mathcal {L}_{smooth}({\phi }), \tag{4}\end{equation*}</script><p>作者为 $\mathcal{L}_{sim}$ 实验了两个常用函数。 第一个是体素均方差，适用于 $f$ 和 $m$ 具有相似的图像 intensity distributions 和 local contrast 的情况：</p>
 <script type="math/tex; mode=display">
-\begin{equation*} MSE(f, m\circ {\phi }) = \frac {1}{|\Omega |}\sum _{p \in \Omega } \left [{ f(\mathbf {p}) - [m\circ {\phi }] (\mathbf {p}) }\right]^{2}.\tag{5}\end{equation*}</script><p>第二个是 $f$ 和 $m\circ{\phi }$ 的 <em>local cross-correlation</em>，它对不同数据之间的强度变化更健壮。 令 $\hat{f}({\mathbf{p}})$ 和<br>$<a href="\mathbf{p}">\hat{m}\circ{\phi}</a>$ 表示具有 local mean intensities 的图像：$\hat{f}({\mathbf{p}})=\frac{1}{n^{3}}\sum _{\mathbf{p}_{i}}f\,\,(\mathbf{p}_{i})$，其中 $\mathbf{p}_{i}$ 遍历 $\mathbf{p}$ 周围的 $n^{3}$ volume，其中 $n=9$。 $f$ 和 $m\circ{\phi }$ 的 <em>local cross-correlation</em> 写为：</p>
+\begin{equation*} MSE(f, m\circ {\phi }) = \frac {1}{|\Omega |}\sum _{p \in \Omega } \left [{ f(\mathbf {p}) - [m\circ {\phi }] (\mathbf {p}) }\right]^{2}.\tag{5}\end{equation*}</script><p>第二个是 $f$ 和 $m\circ{\phi }$ 的 <em>local cross-correlation</em>，它对不同数据之间的强度变化更健壮。 令 $\hat{f}({\mathbf{p}})$ 和<br>$[\hat{m}\circ{\phi}]\mathbf{(p)}$ 表示具有 local mean intensities 的图像：$\hat{f}({\mathbf{p}})=\frac{1}{n^{3}}\sum _{\mathbf{p}_{i}}f\,\,(\mathbf{p}_{i})$，其中 $\mathbf{p}_{i}$ 遍历 $\mathbf{p}$ 周围的 $n^{3}$ volume，其中 $n=9$。 $f$ 和 $m\circ{\phi }$ 的 <em>local cross-correlation</em> 写为：</p>
 <script type="math/tex; mode=display">
 \begin{align*}&\hspace{-1.5pc}CC(f, m\circ {\phi }) \\&\hspace{-1.3pc}=\!\sum \limits _{ \mathbf {p}\in \Omega }\!\frac {\left ({\!\sum \limits _{ \mathbf {p}_{i}} (f({ \mathbf {p}_{i}})\!-\!\hat { f} ({ \mathbf {p}}))([m\circ {\phi }] ({ \mathbf {p}_{i}})\!-\![\hat { m} \circ {\phi }] ({ \mathbf {p}}))\!}\right)^{2}}{\left ({\!\sum \limits _{ \mathbf {p}_{i}} (f({ \mathbf {p}_{i}})\!-\!\hat { f} ({ \mathbf {p}}))^{2}\!}\right)\left ({\sum \limits _{ \mathbf {p}_{i}} ([m\circ {\phi }] ({ \mathbf {p}_{i}})\!-\![\hat { m}\circ {\phi }] ({ \mathbf {p}}))^{2}\!}\right)}.\!\!\!\!\!\!\! \\\tag{6}\end{align*}</script><p>CC越高表示对齐越好，产生损失函数：$\mathcal{L}_{sim}(f, m, {\phi}) = -CC(f,m\circ{\phi})$.</p>
 <p>使 $\mathcal{L}_{sim}$ 最小化将鼓励 $m\circ{\phi}$ 近似于 $f$，但可能会生成在物理上不现实的非平滑 ${\phi}$。 我们鼓励在 displacement $\mathbf{u}$ 的空间梯度上使用 diffusion regularizer 来获得平滑的 displacement field ${\phi}$:</p>
+<script type="math/tex; mode=display">
+\begin{equation*} \mathcal {L}_{smooth}({\phi }) = \sum _{ \mathbf {p}\in \Omega } \lVert \nabla { \mathbf {u}(\mathbf {p})} \rVert ^{2},\tag{7}\end{equation*}</script><p>并使用相邻体素之间的差异来估算空间梯度。具体来说，对于 $\nabla \mathbf {u} (\mathbf {p}) = \left ({\frac {\partial \mathbf {u} (\mathbf {p})}{\partial x}, \frac {\partial \mathbf {u}(\mathbf {p})}{\partial y}, \frac {\partial \mathbf {u} (\mathbf {p})}{\partial z}}\right)$ , 近似 $\frac {\partial \mathbf {u}(\mathbf {p})}{\partial x} \approx \mathbf {u} ((p_{x} + 1, p_{y}, p_{z})) - \mathbf {u}((p_{x}, p_{y}, p_{z}))$ , 并对 $\frac {\partial \mathbf {u} (\mathbf {p})}{\partial y}$ 和  $\frac {\partial \mathbf {u}(\mathbf {p})}{\partial z}$ 使用similar approximations.</p>
 
     </div>
 
