@@ -60,7 +60,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;2021%E5%B9%B45%E6%9C%8814%E6%97%A5&#x2F;voxelmorph_1.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;2021%E5%B9%B45%E6%9C%8814%E6%97%A5&#x2F;voxelmorph_2.png">
-<meta property="og:updated_time" content="2021-05-15T03:34:29.702Z">
+<meta property="og:updated_time" content="2021-05-15T03:59:07.692Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;2021%E5%B9%B45%E6%9C%8814%E6%97%A5&#x2F;voxelmorph_1.png">
 
@@ -228,7 +228,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-15 11:34:29" itemprop="dateModified" datetime="2021-05-15T11:34:29+08:00">2021-05-15</time>
+                <time title="修改时间：2021-05-15 11:59:07" itemprop="dateModified" datetime="2021-05-15T11:59:07+08:00">2021-05-15</time>
               </span>
 
           
@@ -280,6 +280,15 @@
 <p>使 $\mathcal{L}_{sim}$ 最小化将鼓励 $m\circ{\phi}$ 近似于 $f$，但可能会生成在物理上不现实的非平滑 ${\phi}$。 我们鼓励在 displacement $\mathbf{u}$ 的空间梯度上使用 diffusion regularizer 来获得平滑的 displacement field ${\phi}$:</p>
 <script type="math/tex; mode=display">
 \begin{equation*} \mathcal {L}_{smooth}({\phi }) = \sum _{ \mathbf {p}\in \Omega } \lVert \nabla { \mathbf {u}(\mathbf {p})} \rVert ^{2},\tag{7}\end{equation*}</script><p>并使用相邻体素之间的差异来估算空间梯度。具体来说，对于 $\nabla \mathbf {u} (\mathbf {p}) = \left ({\frac {\partial \mathbf {u} (\mathbf {p})}{\partial x}, \frac {\partial \mathbf {u}(\mathbf {p})}{\partial y}, \frac {\partial \mathbf {u} (\mathbf {p})}{\partial z}}\right)$ , 近似 $\frac {\partial \mathbf {u}(\mathbf {p})}{\partial x} \approx \mathbf {u} ((p_{x} + 1, p_{y}, p_{z})) - \mathbf {u}((p_{x}, p_{y}, p_{z}))$ , 并对 $\frac {\partial \mathbf {u} (\mathbf {p})}{\partial y}$ 和  $\frac {\partial \mathbf {u}(\mathbf {p})}{\partial z}$ 使用similar approximations.</p>
+<p><strong><em>2) Auxiliary Data Loss Function:</em></strong></p>
+<p>在这里，我们描述了 VoxelMorph 如何利用训练期间而不是测试期间可用的辅助信息。 解剖分割图有时在训练过程中可用，并且可以由人类专家或自动算法进行注释。 分割图将每个体素分配给一个解剖结构。 如果配准场 $\phi$ 表示精确的解剖学对应关系，则 $f$和 $m\circ{\phi}$ 中与同一解剖结构相对应的区域应很好地重叠。</p>
+<script type="math/tex; mode=display">
+\begin{equation*} \text {Dice}(s_{f}^{k}, s^{k}_{m} \circ {\phi }) = 2 \cdot \frac {| s^{k}_{f} \cap (s^{k}_{m} \circ {\phi })|}{| s^{k}_{f}| + | s^{k}_{m} \circ {\phi } |}. \tag{8}\end{equation*}</script><script type="math/tex; mode=display">
+\begin{equation*} \mathcal {L}_{seg}(s_{f}, s_{m} \circ {\phi }) = - \frac {1}{K} \sum _{k=1}^{K} \text {Dice}(s^{k}_{f}, s^{k}_{m} \circ {\phi }). \tag{9}\end{equation*}</script><p>单独使用 $\mathcal {L}_{seg}$ 并不能提高图像外观的平滑度和一致性，而这对于良好的配准至关重要。 因此，我们将 $\mathcal {L}_{seg}$ 与（4）结合起来以达到目标：</p>
+<script type="math/tex; mode=display">
+\begin{align*}&\hspace{-1.6pc}\mathcal {L}_{a}(f, m, s_{f}, s_{m}, {\phi }) \\&\qquad \qquad \quad =\mathcal {L}_{us}(f, m, {\phi }) + \gamma \mathcal {L}_{seg}(s_{f}, s_{m} \circ {\phi }), \tag{10}\end{align*}</script><p><strong><em>D. Amortized Optimization Interpretation</em></strong></p>
+<p><strong>Experiments</strong></p>
+<p>使用了 3731 T1–weighted brain MRI scans from eight publicly available datasets: <em>OASIS</em>, <em>ABIDE</em>, <em>ADHD200</em>, <em>MCIC</em>, <em>PPMI</em>, <em>HABS</em>, <em>Harvard GSP</em>, 和 <em>FreeSurfer Buckner40</em>. All scans were resampled to a $256\times 256 \times 256$ grid with 1mm isotropic voxels. 使用了标准的预处理步骤，包括 affine spatial normalization and brain extraction for each scan using FreeSurfer，并将图像 crop 到 $160\times 192 \times 224$. 所有的 MRI 图像</p>
 
     </div>
 
