@@ -51,20 +51,18 @@
   };
 </script>
 
-  <meta name="description" content="non-local module 旨在捕获图像和视频中的long-range spatio-temporal dependencies。尽管表现出出色的性能，但它缺乏对 interactions between positions across channels 进行建模的机制，这对于识别细粒度的对象和动作至关重要。为了解决此限制，作者对 non-local module 进行了扩展，并考虑了任">
-<meta name="keywords" content="attention">
+  <meta name="description" content="CVPR每年都有不少医学影像相关文章，CVPR2021共有1663篇论文被接收，接收率为23.7%，其中有不少医学影像的文章，一起来看看吧。">
+<meta name="keywords" content="CVPR2021">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Compact Generalized Non-local Network 笔记">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;11&#x2F;Compact%20Generalized%20Non-local%20Network%20%E7%AC%94%E8%AE%B0&#x2F;index.html">
+<meta property="og:title" content="CVPR2021医学影像">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2021&#x2F;05&#x2F;15&#x2F;CVPR2021%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F&#x2F;index.html">
 <meta property="og:site_name" content="AiChery">
-<meta property="og:description" content="non-local module 旨在捕获图像和视频中的long-range spatio-temporal dependencies。尽管表现出出色的性能，但它缺乏对 interactions between positions across channels 进行建模的机制，这对于识别细粒度的对象和动作至关重要。为了解决此限制，作者对 non-local module 进行了扩展，并考虑了任">
+<meta property="og:description" content="CVPR每年都有不少医学影像相关文章，CVPR2021共有1663篇论文被接收，接收率为23.7%，其中有不少医学影像的文章，一起来看看吧。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_12.png">
-<meta property="og:updated_time" content="2019-11-11T08:24:47.836Z">
+<meta property="og:updated_time" content="2021-05-15T15:19:42.029Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;attention_12.png">
 
-<link rel="canonical" href="http://yoursite.com/2019/11/11/Compact%20Generalized%20Non-local%20Network%20%E7%AC%94%E8%AE%B0/">
+<link rel="canonical" href="http://yoursite.com/2021/05/15/CVPR2021%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F/">
 
 
 <script id="page-configurations">
@@ -78,7 +76,7 @@
   };
 </script>
 
-  <title>Compact Generalized Non-local Network 笔记 | AiChery</title>
+  <title>CVPR2021医学影像 | AiChery</title>
   
 
 
@@ -198,7 +196,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/11/Compact%20Generalized%20Non-local%20Network%20%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/05/15/CVPR2021%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/avatar.jpg">
@@ -211,7 +209,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Compact Generalized Non-local Network 笔记
+          CVPR2021医学影像
         </h1>
 
         <div class="post-meta">
@@ -222,18 +220,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-11 15:21:22 / 修改时间：16:24:47" itemprop="dateCreated datePublished" datetime="2019-11-11T15:21:22+08:00">2019-11-11</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机视觉</span>
-                  </a>
-                </span>
+              <time title="创建时间：2021-05-15 23:14:20 / 修改时间：23:19:42" itemprop="dateCreated datePublished" datetime="2021-05-15T23:14:20+08:00">2021-05-15</time>
             </span>
 
           
@@ -254,26 +241,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/attention_12.png" alt=""></p>
-<p><a href="https://arxiv.org/abs/1711.07971" target="_blank" rel="noopener">non-local module</a> 旨在捕获图像和视频中的long-range spatio-temporal dependencies。尽管表现出出色的性能，但它缺乏对 interactions between positions across channels 进行建模的机制，这对于识别细粒度的对象和动作至关重要。为了解决此限制，作者对 non-local module 进行了扩展，并考虑了任意两个 channels 的 positions 之间的相关性。此扩展利用泰勒扩展的 multiple kernel functions 的紧凑表示形式，从而使generalized  non-local module 成为快速而低复杂度的计算流程。此外，作者在 channel groups 内实施 generalized non-local  方法以 ease the optimization。实验结果说明了 generalized non-local module 在细粒度目标识别和视频分类上的明显改进和实际适用性。</p>
+        <p>CVPR每年都有不少医学影像相关文章，CVPR2021共有1663篇论文被接收，接收率为23.7%，其中有不少医学影像的文章，一起来看看吧。</p>
 <a id="more"></a>
-<p>NIPS2018的文章：</p>
-<p><a href="https://arxiv.org/abs/1810.13125" target="_blank" rel="noopener">文章地址</a></p>
-<p><a href="https://github.com/KaiyuYue/cgnl-network.pytorch" target="_blank" rel="noopener">代码PyTorch</a> </p>
-<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><p>尽管 <a href="https://arxiv.org/abs/1711.07971" target="_blank" rel="noopener">non-local module</a> 具有非常好的性能，但是其只考虑 global spatio-temporal correlation，融合了所有的 channels，可能丢失微弱的，但是很重要的 cross-channel clues.</p>
-<p>本文对 non-local module 进行了扩展，可以学习  explicit correlations among all of the elements across the channels. </p>
-<ul>
-<li>First, this extension scale-ups the representation power of the non-local operation to attend the<br>interaction between subtle object parts.</li>
-<li>Second, we propose its compact representation for various kernel functions to address the high computation burden issue. We show that as a self-contained module, the compact generalized non-local (CGNL) module provides steady improvements in classification tasks. </li>
-<li>Third, we also investigate the grouped CGNL blocks, which model the correlations across channels within each group.</li>
-</ul>
-<h2 id="2-Related-Works"><a href="#2-Related-Works" class="headerlink" title="2. Related Works"></a>2. Related Works</h2><p><strong>Channel Correlations:</strong> SENet 首先明确地建模channels 间的 interdependencies，旨在选择有用的  feature maps，并抑制其它，只考虑了每个 channel 上的 global information. 作者提出了 generalized non-local (GNL) 模块，该模块对 non-local (NL) 模块进行了扩展，以学习跨 channels 的任意两个位置之间的相关性。</p>
-<p><strong>Compact Representation:</strong>  <strong><font color=red>没看懂……</font></strong> </p>
-<h2 id="3-Approach"><a href="#3-Approach" class="headerlink" title="3. Approach"></a>3. Approach</h2><h3 id="3-1-Review-of-Non-local-Operation"><a href="#3-1-Review-of-Non-local-Operation" class="headerlink" title="3.1 Review of Non-local Operation"></a>3.1 Review of Non-local Operation</h3><h3 id="3-2-Review-of-Bilinear-Pooling"><a href="#3-2-Review-of-Bilinear-Pooling" class="headerlink" title="3.2 Review of Bilinear Pooling"></a>3.2 Review of Bilinear Pooling</h3><h3 id="3-3-Generalized-Non-local-Operation"><a href="#3-3-Generalized-Non-local-Operation" class="headerlink" title="3.3 Generalized Non-local Operation"></a>3.3 Generalized Non-local Operation</h3><blockquote>
-<p>本质上是直接在（key, query, value）三元组进行reshape的时候把channel的信息加进去，但是这带来一个很重要的问题就是计算复杂度大大增加。我们知道分组卷积是一种有效的降低参数量的方案，这里也采用分组的方式。但是即使采用分组任然不能从根本上解决计算复杂度和参数量大的问题，作者很巧妙的利用泰勒级数展开后调整计算key, query, value的顺序，有效的降低了相应的计算复杂度。</p>
-<p>来自：<a href="https://www.zhuanzhi.ai/document/a5b6041ba0744b14cddd1f7e45899176" target="_blank" rel="noopener">https://www.zhuanzhi.ai/document/a5b6041ba0744b14cddd1f7e45899176</a></p>
-<p>思路很棒，但时间有限，以后有机会再研究。</p>
-</blockquote>
+<p>参考：<a href="https://github.com/extreme-assistant/CVPR2021-Paper-Code-Interpretation" target="_blank" rel="noopener">https://github.com/extreme-assistant/CVPR2021-Paper-Code-Interpretation</a></p>
+<p>本系列将对部分文章进行深入解读，敬请关注！</p>
+<p>[1] Automatic Vertebra Localization and Identification in CT by Spine Rectification and Anatomically-constrained Optimization<br><em>通过脊柱矫正和解剖学约束优化在CT中自动进行椎骨定位和识别</em><br><a href="https://arxiv.org/abs/2012.07947" target="_blank" rel="noopener">paper</a></p>
+<p>[2] Deep Lesion Tracker: Monitoring Lesions in 4D Longitudinal Imaging Studies<br><em>深部病变追踪器：在4D纵向成像研究中监控病变</em><br><a href="https://arxiv.org/abs/2012.04872" target="_blank" rel="noopener">paper</a>  </p>
+<p>[3] 3D Graph Anatomy Geometry-Integrated Network for Pancreatic Mass Segmentation, Diagnosis, and Quantitative Patient Management<br><em>用于胰腺肿块分割，诊断和定量患者管理的3D图形解剖学几何集成网络</em><br><a href="https://arxiv.org/abs/2012.04701" target="_blank" rel="noopener">paper</a></p>
+<p> [4] Multi-institutional Collaborations for Improving Deep Learning-based Magnetic Resonance Image Reconstruction Using Federated Learning<br> <em>多机构协作改进基于深度学习的联合学习磁共振图像重建</em><br><a href="https://arxiv.org/abs/2103.02148" target="_blank" rel="noopener">paper</a> | <a href="https://github.com/guopengf/FLMRCM" target="_blank" rel="noopener">code</a>  </p>
+<p> [5] DeepTag: An Unsupervised Deep Learning Method for Motion Tracking on Cardiac Tagging Magnetic Resonance Images<br> <em>一种心脏标记磁共振图像运动跟踪的无监督深度学习方法</em><br><a href="https://arxiv.org/abs/2103.02772" target="_blank" rel="noopener">paper</a>  </p>
+<p>[6] Discovering Hidden Physics Behind Transport Dynamics<br><em>在运输动力学背后发现隐藏物理</em><br><a href="https://arxiv.org/abs/2011.12222" target="_blank" rel="noopener">paper</a>  </p>
+<p>[7] Multiple Instance Captioning: Learning Representations from Histopathology Textbooks and Articles<br><em>多实例字幕：从组织病理学教科书和文章中学习表示形式</em><br><a href="https://arxiv.org/pdf/2103.05121.pdf" target="_blank" rel="noopener">paper</a>  </p>
+<p>[8] FedDG: Federated Domain Generalization on Medical Image Segmentation via Episodic Learning in Continuous Frequency Space<br><em>在连续频率空间中通过情景学习进行医学图像分割的联合域泛化</em><br><a href="https://arxiv.org/abs/2103.06030" target="_blank" rel="noopener">paper</a> | <a href="https://github.com/liuquande/FedDG-ELCFS" target="_blank" rel="noopener">code</a>  </p>
+<p>[9] XProtoNet: Diagnosis in Chest Radiography with Global and Local Explanations<br><em>使用全局和局部解释诊断胸部X光片</em><br><a href="https://arxiv.org/pdf/2103.10663.pdf" target="_blank" rel="noopener">paper</a>  </p>
+<p>[10] Brain Image Synthesis with Unsupervised Multivariate Canonical CSCℓ4Net<br><em>无监督多元规范CSCℓ4Net的脑图像合成</em><br><a href="https://arxiv.org/pdf/2103.11587.pdf" target="_blank" rel="noopener">paper</a>  </p>
+<p> [11] Confluent Vessel Trees with Accurate Bifurcations<br> <em>分叉的融合容器树</em><br> <a href="https://arxiv.org/abs/2103.14268" target="_blank" rel="noopener">paper</a>  </p>
+<p>[12] DiNTS: Differentiable Neural Network Topology Search for 3D Medical Image Segmentation<br><em>DiNTS：用于3D医学图像分割的可区分神经网络拓扑搜索</em><br><a href="https://arxiv.org/abs/2103.15954" target="_blank" rel="noopener">paper</a>  </p>
+<p> [13] Every Annotation Counts: Multi-label Deep Supervision for Medical Image Segmentation<br> <em>每种注释都至关重要：医学图像分割的多标签深度监管</em><br><a href="https://arxiv.org/abs/2104.13243" target="_blank" rel="noopener">paper</a>  </p>
 
     </div>
 
@@ -304,24 +288,21 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/attention/" rel="tag"># attention</a>
+              <a href="/tags/CVPR2021/" rel="tag"># CVPR2021</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/11/11/CBAM%20Convolutional%20Block%20Attention%20Module%E7%AC%94%E8%AE%B0/" rel="next" title="CBAM Convolutional Block Attention Module笔记">
-                  <i class="fa fa-chevron-left"></i> CBAM Convolutional Block Attention Module笔记
+                <a href="/2021/05/14/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-voxelmorph/" rel="next" title="voxelmorph学习笔记">
+                  <i class="fa fa-chevron-left"></i> voxelmorph学习笔记
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/11/11/PSANet%20%E7%AC%94%E8%AE%B0/" rel="prev" title="PSANet 笔记">
-                  PSANet 笔记 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -361,7 +342,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Introduction"><span class="nav-number">1.</span> <span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Related-Works"><span class="nav-number">2.</span> <span class="nav-text">2. Related Works</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Approach"><span class="nav-number">3.</span> <span class="nav-text">3. Approach</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Review-of-Non-local-Operation"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Review of Non-local Operation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Review-of-Bilinear-Pooling"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Review of Bilinear Pooling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Generalized-Non-local-Operation"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Generalized Non-local Operation</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -514,56 +494,6 @@
   
 
   
-      
-<script type="text/x-mathjax-config">
-    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        extensions: ['[mhchem]/mhchem.js'],
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
 
   
 
@@ -577,7 +507,7 @@
       repo: 'PingLun',
       owner: 'chenypic',
       admin: ['chenypic'],
-      id: '1c556c208a44105954888a2dba0abff0',
+      id: 'aaf5df335a35b868b1a23b6393936742',
         language: '',
       distractionFreeMode: 'true'
     });
