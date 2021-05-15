@@ -51,16 +51,16 @@
   };
 </script>
 
-  <meta name="description" content="voxelmorph学习笔记">
+  <meta name="description" content="VoxelMorph: A Learning Framework for Deformable Medical Image Registration">
 <meta property="og:type" content="article">
 <meta property="og:title" content="voxelmorph学习笔记">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2021&#x2F;05&#x2F;14&#x2F;%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-voxelmorph&#x2F;index.html">
 <meta property="og:site_name" content="AiChery">
-<meta property="og:description" content="voxelmorph学习笔记">
+<meta property="og:description" content="VoxelMorph: A Learning Framework for Deformable Medical Image Registration">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;2021%E5%B9%B45%E6%9C%8814%E6%97%A5&#x2F;voxelmorph_1.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;2021%E5%B9%B45%E6%9C%8814%E6%97%A5&#x2F;voxelmorph_2.png">
-<meta property="og:updated_time" content="2021-05-14T15:41:36.129Z">
+<meta property="og:updated_time" content="2021-05-15T03:03:38.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;2021%E5%B9%B45%E6%9C%8814%E6%97%A5&#x2F;voxelmorph_1.png">
 
@@ -220,10 +220,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-05-14 17:46:26 / 修改时间：23:41:36" itemprop="dateCreated datePublished" datetime="2021-05-14T17:46:26+08:00">2021-05-14</time>
+              <time title="创建时间：2021-05-14 17:46:26" itemprop="dateCreated datePublished" datetime="2021-05-14T17:46:26+08:00">2021-05-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-15 11:03:38" itemprop="dateModified" datetime="2021-05-15T11:03:38+08:00">2021-05-15</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -243,7 +249,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>voxelmorph学习笔记</p>
+        <p><a href="https://ieeexplore.ieee.org/document/8633930" target="_blank" rel="noopener">VoxelMorph: A Learning Framework for Deformable Medical Image Registration</a></p>
 <a id="more"></a>
 <p>令$f$ 表示 fixed image，$m$表示 moving image，$\phi$ 为 registration field.</p>
 <script type="math/tex; mode=display">
@@ -254,7 +260,19 @@
 <p><strong>A. VoxelMorph CNN Architecture</strong></p>
 <p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/2021%E5%B9%B45%E6%9C%8814%E6%97%A5/voxelmorph_2.png" alt=""><br>简单的U-Net结构，输入为 2 channel 的 $f$ 和 $m$ 的级联。</p>
 <p><strong>B. Spatial Transformation Function</strong></p>
-
+<p>本文方法通过最小化 $m\circ{\phi}$ 和 $f$ 之间的差异来部分学习最佳参数值。 为了使用基于梯度的标准方法，本文基于 spatial transformer networks 构造了可微分运算来计算 $m\circ{\phi}$.</p>
+<p>对于每个voxel $\mathbf{p}$，我们计算 $m$ 中的一个 voxel 位置 $\mathbf{p}^{\prime }=\mathbf{p}+ \mathbf{u}(\mathbf{p})$. 因为图像值仅在整数位置定义，所以我们在八近邻体素处线性插值：</p>
+<script type="math/tex; mode=display">
+\begin{equation*} m\circ {\phi }(\mathbf {p}) = \sum _{\mathbf {q} \in \mathcal {Z}(\mathbf {p}^{\prime })} m(\mathbf {q}) \prod _{d \in \{x,y,z\}} (1-| \mathbf {p}^{\prime }_{d} - \mathbf {q}_{d}|),\tag{3}\end{equation*}</script><p><strong>C. Loss Functions</strong></p>
+<p>作者提出两个损失函数：一个无监督的损失 $\mathcal{L}_{us}$，它仅使用 <em>input volumes</em> 和 <em>generated registration field</em> 来评估模型，以及一个辅助损失 $\mathcal{L}_{a}$，它在训练时利用了解剖学上的分割。</p>
+<p><strong><em>1) Unsupervised Loss Function:</em></strong></p>
+<p>无监督损失 $\mathcal{L}_{us}(\cdot,\cdot,\cdot)$ 包括 2 个成分：</p>
+<ul>
+<li>$\mathcal{L}_{sim}$：惩罚外观差异</li>
+<li>$\mathcal{L}_{smooth}$：惩罚 $\phi$ 中的局部空间变化：</li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{equation*} \mathcal {L}_{us}(f, m, {\phi }) = \mathcal {L}_{sim}(f, m\circ {\phi }) + \lambda \mathcal {L}_{smooth}({\phi }), \tag{4}\end{equation*}</script>
     </div>
 
     
