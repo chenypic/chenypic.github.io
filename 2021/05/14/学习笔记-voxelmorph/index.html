@@ -60,7 +60,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;2021%E5%B9%B45%E6%9C%8814%E6%97%A5&#x2F;voxelmorph_1.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;2021%E5%B9%B45%E6%9C%8814%E6%97%A5&#x2F;voxelmorph_2.png">
-<meta property="og:updated_time" content="2021-05-15T03:59:07.692Z">
+<meta property="og:updated_time" content="2021-05-15T04:23:52.005Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;2021%E5%B9%B45%E6%9C%8814%E6%97%A5&#x2F;voxelmorph_1.png">
 
@@ -228,7 +228,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-15 11:59:07" itemprop="dateModified" datetime="2021-05-15T11:59:07+08:00">2021-05-15</time>
+                <time title="修改时间：2021-05-15 12:23:52" itemprop="dateModified" datetime="2021-05-15T12:23:52+08:00">2021-05-15</time>
               </span>
 
           
@@ -288,7 +288,9 @@
 <script type="math/tex; mode=display">
 \begin{align*}&\hspace{-1.6pc}\mathcal {L}_{a}(f, m, s_{f}, s_{m}, {\phi }) \\&\qquad \qquad \quad =\mathcal {L}_{us}(f, m, {\phi }) + \gamma \mathcal {L}_{seg}(s_{f}, s_{m} \circ {\phi }), \tag{10}\end{align*}</script><p><strong><em>D. Amortized Optimization Interpretation</em></strong></p>
 <p><strong>Experiments</strong></p>
-<p>使用了 3731 T1–weighted brain MRI scans from eight publicly available datasets: <em>OASIS</em>, <em>ABIDE</em>, <em>ADHD200</em>, <em>MCIC</em>, <em>PPMI</em>, <em>HABS</em>, <em>Harvard GSP</em>, 和 <em>FreeSurfer Buckner40</em>. All scans were resampled to a $256\times 256 \times 256$ grid with 1mm isotropic voxels. 使用了标准的预处理步骤，包括 affine spatial normalization and brain extraction for each scan using FreeSurfer，并将图像 crop 到 $160\times 192 \times 224$. 所有的 MRI 图像</p>
+<p>使用了 3731 T1–weighted brain MRI scans from eight publicly available datasets: <em>OASIS</em>, <em>ABIDE</em>, <em>ADHD200</em>, <em>MCIC</em>, <em>PPMI</em>, <em>HABS</em>, <em>Harvard GSP</em>, 和 <em>FreeSurfer Buckner40</em>. All scans were resampled to a $256\times 256 \times 256$ grid with 1mm isotropic voxels. 使用了标准的预处理步骤，包括 affine spatial normalization and brain extraction for each scan using FreeSurfer，并将图像 crop 到 $160\times 192 \times 224$. 所有的 MRI 图像均使用 <em>FreeSurfer</em> 自动分割，并进行了质量控制。</p>
+<p>使用 Symmetric Normalization (SyN) 作为第一个 baseline. 在开源的高级归一化工具（ANTs）软件包中使用SyN实现，with a cross-correlation similarity measure.  在处理医学图像的整个过程中，我们发现默认的ANTs平滑度参数对于将ANTs应用于我们的数据而言不是最理想的。 我们使用跨多个数据集的广泛参数扫描获得了改进的参数，并在这些实验中使用了这些参数。 具体来说，我们使用0.25的SyN步长，高斯参数（9，0.2），三个尺度，每个尺度最多201次迭代。 我们还将NiftyReg软件包用作第二个基准。 不幸的是，目前还没有GPU实现，而是我们构建了多线程CPU版本。我们搜索了各种参数设置以获得改进的参数，并使用CC cost function, grid spacing of 5, and 500 iterations.</p>
+<p>Our code and model parameters are available online at <a href="https://github.com/voxelmorph/voxelmorph" target="_blank" rel="noopener">https://github.com/voxelmorph/voxelmorph</a>.</p>
 
     </div>
 
