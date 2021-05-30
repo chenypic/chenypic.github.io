@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="AiChery" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="腺样体肥大是腺样体的病理性增生，可引起睡眠呼吸障碍。头颅侧位片通常用来筛查腺样体肥大，需要需要医生手动测量腺样体宽度与鼻咽宽度的比率，此过程既繁琐又耗时。针对此问题，华西口腔正畸科赵志河教授团队开发出了一种基于深度学习的筛查工具，他们提出了深度学习模型 VGG-Lite，收集了具有1023 张 X 射线图像的数据集，实现了腺样体肥大的自动检测。在测试集中，达到了 0.898的敏感性，0.882的特">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习自动从头颅侧位片中检测腺样体肥大">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2021&#x2F;05&#x2F;30&#x2F;%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%87%AA%E5%8A%A8%E4%BB%8E%E5%A4%B4%E9%A2%85%E4%BE%A7%E4%BD%8D%E7%89%87%E4%B8%AD%E6%A3%80%E6%B5%8B%E8%85%BA%E6%A0%B7%E4%BD%93%E8%82%A5%E5%A4%A7&#x2F;index.html">
+<meta property="og:site_name" content="AiChery">
+<meta property="og:description" content="腺样体肥大是腺样体的病理性增生，可引起睡眠呼吸障碍。头颅侧位片通常用来筛查腺样体肥大，需要需要医生手动测量腺样体宽度与鼻咽宽度的比率，此过程既繁琐又耗时。针对此问题，华西口腔正畸科赵志河教授团队开发出了一种基于深度学习的筛查工具，他们提出了深度学习模型 VGG-Lite，收集了具有1023 张 X 射线图像的数据集，实现了腺样体肥大的自动检测。在测试集中，达到了 0.898的敏感性，0.882的特">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;Adenoid_1.PNG">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;Adenoid_2.PNG">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;Adenoid_3.PNG">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;Adenoid_4.PNG">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;Adenoid_5.PNG">
+<meta property="og:updated_time" content="2021-05-30T10:23:36.806Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;Adenoid_1.PNG">
+
+<link rel="canonical" href="http://yoursite.com/2021/05/30/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%87%AA%E5%8A%A8%E4%BB%8E%E5%A4%B4%E9%A2%85%E4%BE%A7%E4%BD%8D%E7%89%87%E4%B8%AD%E6%A3%80%E6%B5%8B%E8%85%BA%E6%A0%B7%E4%BD%93%E8%82%A5%E5%A4%A7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>深度学习自动从头颅侧位片中检测腺样体肥大 | AiChery</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AiChery</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Life is about waiting for the right moment to act.</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-简历">
+
+    <a href="/Resume/" rel="section"><i class="fa fa-fw fa-th"></i>简历</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/05/30/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%87%AA%E5%8A%A8%E4%BB%8E%E5%A4%B4%E9%A2%85%E4%BE%A7%E4%BD%8D%E7%89%87%E4%B8%AD%E6%A3%80%E6%B5%8B%E8%85%BA%E6%A0%B7%E4%BD%93%E8%82%A5%E5%A4%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/avatar.jpg">
+      <meta itemprop="name" content="Wei Cheney">
+      <meta itemprop="description" content="谦谦君子，温润如玉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AiChery">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          深度学习自动从头颅侧位片中检测腺样体肥大
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-30 18:22:51 / 修改时间：18:23:36" itemprop="dateCreated datePublished" datetime="2021-05-30T18:22:51+08:00">2021-05-30</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>腺样体肥大是腺样体的病理性增生，可引起睡眠呼吸障碍。头颅侧位片通常用来筛查腺样体肥大，需要需要医生手动测量腺样体宽度与鼻咽宽度的比率，此过程既繁琐又耗时。针对此问题，华西口腔正畸科赵志河教授团队开发出了一种基于深度学习的筛查工具，他们提出了深度学习模型 VGG-Lite，收集了具有1023 张 X 射线图像的数据集，实现了腺样体肥大的自动检测。在测试集中，达到了 0.898的敏感性，0.882的特异性，0.880的阳性预测值，0.900的阴性预测值。此外，此模型具有远超医生的诊断速度，可以提高从头颅侧位片评估腺样体肥大的准确性、速度和效率。</p>
+<blockquote>
+<p>Liu J L, Li S H, Cai Y M, et al. Automated Radiographic Evaluation of Adenoid Hypertrophy Based on VGG-Lite[J]. Journal of Dental Research, 2021: 00220345211009474.</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>腺样体是位于鼻咽后气道的淋巴组织的聚集体，通常出现在 6 到 10 岁之间的儿童早期，然后在 16 岁左右消失。 腺样体肥大是鼻咽扁桃体的病理性增大，是儿童期鼻塞的最常见原因，并与“腺样面”形态相关，特征为上颌弓狭窄、后反咬合、下颌后移、 和大脸高度。 根据最近的一项meta分析，腺样体肥大的患病率在一般儿科人群中为 34%。 腺样体肥大可能是由频繁的上呼吸道感染引起的，它经常导致鼻塞、口呼吸、打鼾和渗出液的中耳炎。</p>
+<p>患有腺样体肥大的儿童主诉是咬合障碍或对其外形不满意。口腔医生通常会使用头颅侧位片以筛查腺样体肥大的可能性：在该图像上测量腺样体宽度与鼻咽宽度的比率（AN 比率），这允许临床医生确定腺样体是否病理性增大。如果认为病理性扩大，患者通常会接受更广泛的耳鼻喉科随访以明确诊断，并可能接受腺样体切除术。因此，口腔医生应高度重视早期腺样体肥大的筛查，这有助于预防任何相关的颅面后果。在根据头颅侧位片评估疑似腺样体肥大的儿童时，医生需要标记标志点以测量 AN 比率，这既耗时又乏味且依赖于经验。根据世界卫生组织 (WHO) 的最新报告，2017 年中国的口腔医生人口比为 4.46:10,000。患者人数过多，医生人数相对较少，导致工作量大。因此，迫切需要开发一种全自动的评估方法，以提高工作效率，减轻医生的工作负担。</p>
+<p>深度学习是一种基于神经网络的机器学习方法。在分类、分割和检测等许多计算机视觉任务上，深度学习具有优异的性能。其中，分类是深度学习最常应用的任务之一，尤其是基于医学图像的疾病诊断。最近，许多基于深度学习的方法已应用于自动疾病诊断。例如，一项研究应用 YOLO 模型在全景 X 光片中检测牙源性囊肿和颌骨肿瘤，精度值为 0.707，召回值为 0.680。深度学习方法也已应用于正畸诊断，为垂直和矢状面骨骼诊断提供超过 90% 的灵敏度、特异性和准确度。到目前为止，只有 1 项研究将深度学习应用于腺样体肥大的诊断。这些研究人员共收集了 688 张腺样体肥大患者的 X 射线图像，并将其分为 3 组进行训练（488 张图像）、验证（64 张图像）和测试（116 张图像）。训练后，他们的深度学习模型在 X 射线图像上生成了 4 个用于腺样体-鼻咽测量的标志点，并在预训练条件下显示了 0.624 的中等 F1 分数或在未预训练条件下显示 0.545 的中等 F1 分数。这种基于深度学习算法的标志点定位方法已得到广泛研究，研究人员致力于最大限度地减少错误和偏差。鉴于不可避免的定位错误，我们推断需要改进方法，消除标志点识别过程，以在减少人工干预的情况下提高评估性能。</p>
+<p>因此，在本研究中，我们提出了一种新颖且简化的深度学习模型 VGG-Lite，用于基于卷积神经网络架构 VGG16 全自动评估腺样体肥大。我们已经使用了1023张X射线图像构建了一个更大的数据集，用于训练，验证和测试。我们全面评估了我们的深度学习方法在自动检测腺样体肥大方面的性能。目前的工作以多种方式扩展了文献。很少有研究报告使用深度学习在 X 射线图像上直接检测腺样体肥大，也没有使用过如此大的数据集，其中包含 1,000 多个样本。我们提出的模型能够在没有任何人工干预的情况下将 X 光片准确地分为显示正常腺样体肥大或病理性腺样体肥大的那些。据我们所知，本研究首次尝试全面评估深度学习直接检测腺样体肥大的性能。通过消除标志点的识别过程，我们希望加快评估过程，并为应转诊至耳鼻喉科医生进行手术的儿童开发一种强大的工具。</p>
+<h2 id="材料和方法"><a href="#材料和方法" class="headerlink" title="材料和方法"></a>材料和方法</h2><h3 id="研究人口和图像数据集"><a href="#研究人口和图像数据集" class="headerlink" title="研究人口和图像数据集"></a>研究人口和图像数据集</h3><p>所有涉及人体X射线图像的实验程序均已获得中国四川省成都市华西医院口腔医学伦理委员会批准。对 2,016 名在 2019 年 1 月至 12 月期间就诊于我院的患者进行了 X 射线图像的回顾性分析。有关头颅测量 X 光片的详细信息见附录。</p>
+<p>图 1A 描述了用于计算腺样体鼻咽比率的手动测量。根据 Elwany 等人的研究，大于 0.73 的 AN 比值可被视为病理性腺样体肥大的指示。在我们的研究中，所有 X 射线图像均由 2 名经验丰富的正畸医生手动标记为“病理性腺样体肥大”（AN 比值 &gt;0.73）或“正常腺样体”（AN 比值≤0.73）。如果出现分歧，请咨询第三位资深正畸专家。如果 3 位专家仍然无法达成一致，则排除此混乱的图像。</p>
+<p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/oral/Adenoid_1.PNG" alt=""></p>
+<blockquote>
+<p>图 1. 手动标记过程和深度学习模型架构概述。 (A) 在标准侧面颅骨 X 光片上计算腺样体 - 鼻咽比率（AN 比率，其中 A 是腺样体的绝对大小，N 是鼻咽空间的大小）的手动测量示例。 红线与基枕骨相切。 腺样体值 A 是通过在最大腺样体组织点处绘制与红线垂直的线来获得的。 鼻咽值 N 位于硬腭 (P) 的后缘和蝶基底枕骨联合症的前下方之间。 (B) VGG-Lite 模型的架构。</p>
+</blockquote>
+<p>在 2016 张 X 光片中，排除了783 张低质量图像，并剔除了 210 张难以识别枕骨斜度的图像。最后，共有 1,023 张患者的 X 射线图像被纳入研究（505 例正常腺样体和 418 例病理性腺样体肥大）。将患者随机分为两组：训练集（923张图像）和测试集（100张图像）。</p>
+<p>VGG16 模型在图像分类方面表现出出色的性能，并且有可能用于对医学图像进行分类。然而，它是为 ImageNet 数据集等大数据集设计的，并且参数太多，模型很容易过拟合训练集。有关缓解过拟合和 VGG-Lite 配置的方法的详细信息总结在表 1 和附录中。模型架构如图 1B 所示。</p>
+<p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/oral/Adenoid_2.PNG" alt=""></p>
+<p>所有统计分析均使用 IBM SPSS 完成。为了比较 2 个深度学习模型（VGG16 和 VGG-Lite）的性能，我们使用了敏感性 (SEN)、特异性 (SPEC)、阳性预测值 (PPV)、阴性预测值 (NPV)、F1 分数等指标，以及受试者工作特征 (ROC) 曲线和 ROC 曲线下面积 (AUC)。</p>
+<p>为了比较 VGG-Lite 模型和人类专家的性能，其他 3 位具有5年以上经验的正畸专家和 VGG-Lite 模型检测同时检测100张测试集图像。模型与专家之间的一致性由 Cohen’s kappa系数 评估。两周后，3位正畸专家借助VGG-Lite模型检测了从测试测试中选出的100张X光片。对于 1 张 X 光片，经验丰富的正畸医生确认模型生成的筛查结果是否与他们的主观视觉评估一致。如果不是这样，则正畸医生会根据对AN比率的测量来定义X射线照片。</p>
+<p>为了评估观察者间和观察者内的一致性，随机选择的 150 张X 光片（不在测试集中）由 3 位专家进行评估，然后在 2 周后重新评估。 <em>Fleiss</em>‘s <em>kapp</em> 系数用于评估观察者之间的一致性，而Cohen’s kappa系数用于评估观察者内部的可靠性。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><h3 id="深度学习模型"><a href="#深度学习模型" class="headerlink" title="深度学习模型"></a>深度学习模型</h3><p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/oral/Adenoid_3.PNG" alt=""></p>
+<p>研究中包括的患者的人口统计学和临床特征如表 2 所示。所有实验均使用 Python 和 TensorFlow 在单个 NVIDIA RTX 2080Ti 上进行。我们提出了一种先进的模型—即 VGG-Lite—基于 VGG16 的腺样体肥大自动诊断。根据5折交叉验证方法，我们随机选取训练集的五分之一作为验证集。我们在模型训练期间对这个验证集执行了交叉验证程序。在训练阶段，我们在 Adam 优化器中使用了 0.001 的学习率和 150 的批大小，然后我们选择了“交叉熵”作为损失函数。将训练轮数设置为100。根据验证集的性能，最高性能出现在 50 到 60 个 epoch 之间。当最高性能首先出现时，我们保存了模型。图 2B 显示了腺样体肥大自动诊断的代表性示例。 VGG16 的敏感性为 0.8750，特异性为 0.8462，PPV 为 0.840，NPV 为 0.8800，F1 得分为 0.8571。 VGG-Lite 的灵敏度为 0.8980，特异性为 0.8824，PPV 为 0.8800，NPV 为 0.9000，F1 得分为 0.8889（表 3）。 ROC 曲线和 AUC 在图 2A 中提供，其中 VGG-Lite 为 0.946，VGG16 为 0.913。</p>
+<p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/oral/Adenoid_4.PNG" alt=""></p>
+<p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/oral/Adenoid_5.PNG" alt=""></p>
+<h3 id="模型性能与仅限专家检测的比较"><a href="#模型性能与仅限专家检测的比较" class="headerlink" title="模型性能与仅限专家检测的比较"></a>模型性能与仅限专家检测的比较</h3><p>深度学习模型显示了通过手动注释样本从 X 射线图像中学习特征的强大能力。根据 F1 分数（表 3），我们的模型显示出与仅专家诊断非常接近的性能。发现 κ 值是 0.86（C.Z. 与模型）、0.90（D.J. 与模型）和 0.88（Y.L. 与模型）。我们的模型显示了与人类专家相似的 SEN、PPV（反映在 F1 分数中）、SPEC 和 NPV 的值。深度学习模型观察 100 张图像的执行时间为 0.07 分钟，而人类专家观察 100 张 X 射线图像并执行诊断平均需要 36.6 分钟（表 3）。我们的实验结果表明，全自动方法比人类专家快约 522 倍。</p>
+<h3 id="有或没有深度学习辅助的人类专家的比较"><a href="#有或没有深度学习辅助的人类专家的比较" class="headerlink" title="有或没有深度学习辅助的人类专家的比较"></a>有或没有深度学习辅助的人类专家的比较</h3><p>为了全面评估我们的深度学习模型的适用性，我们比较了腺样体肥大的人工诊断和人机诊断。深度学习辅助的人类专家（n = 3）在测试集（100 张图像）中平均需要 23.3 分钟的检测时间，这比仅手动诊断（36.6 分钟）的效率要高得多。此外，深度学习略微提高了诊断的准 确性：在深度学习的帮助下，F1 分数提高了 2.78%（表 3）。</p>
+<h3 id="观察者间和观察者内协议"><a href="#观察者间和观察者内协议" class="headerlink" title="观察者间和观察者内协议"></a>观察者间和观察者内协议</h3><p>3 位人类专家的 Fleiss κ 值为 0.956。 Cohen κ 值为 0.973（专家 1，C.Z.）、0.960（专家 2，D.J.）和 0.947（专家 3，Y.L.）。</p>
+<h2 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h2><p>患有腺样体肥大的儿童通常在牙科诊所就诊，主诉是咬合障碍或对其外形不满意。诊断腺样体肥大的金标准方法是鼻纤维光学内窥镜检查。虽然它可以提供宝贵的诊断信息，但它不适合在牙科诊所进行筛查，与 X 射线检查相比，它过于昂贵和耗时。许多研究证明了在检测腺样体肥大时，头颅 X 光片具有很高的可靠性。因此，本文提出了一种实用且简化的深度学习模型 VGG-Lite，使用头颅 X 光片自动评估腺样体肥大。实验表明 VGG-Lite 能够以高精度检测腺样体肥大并缩短诊断时间，可作为可靠的转诊筛查工具。</p>
+<p>许多研究报告称，深度学习方法在癌症、龋病和糖尿病视网膜病变等疾病的自动诊断以及其他医学应用方面具有令人印象深刻的学习能力和分类准确性。然而，很少有研究关注基于深度学习的腺样体肥大诊断。在本文中，我们观察到我们的深度学习模型在使用专业注释的头部测量图像进行训练后显示出良好的学习和检测腺样体肥大的能力。法与基于标准分类指标的人类专家相似，具有更快的检测速度。</p>
+<p>之前的一项研究将深度学习应用于侧向头影测量图像的关键点定位，以自动诊断腺样体肥大。这些研究人员根据深度学习生成的地标测量了 AN 比率。在这项工作中，深度学习以 0.624 的 F1 分数实现了直接分类。我们认为，依赖关键点本地化而不是直接分类可能是由于模型的性能有限而导致的数据集很小（不平衡）（68个正常样本与488个肥大样本）。关键点方法中的错误很普遍，需要耗时的手动修正。因此，深度学习产生的直接分类方法在临床应用中显得更加实用和高效。为了获得深度学习模型的最佳性能，我们组装了一个平衡数据集，其中包含可比数量的非病理和病理 X 射线图像用于训练和测试（505 个正常样本与 518 个肥大样本）。基于传统机器学习提出了另一种从照片中诊断腺样体面部的模型（Hu et al. 2019）。这些研究人员使用现有的面部检测软件 Dlib 来提取患者照片中的面部特征点。随后，机器学习模型使用这些点进行训练，并用于预测新患者照片中的腺样体面部。 Hu等人应用了传统机器学习（支持向量机）的最佳性能。 (2019) 实现了 0.882 的灵敏度和 0.703 的特异性。我们的模型在敏感性（0.898）和特异性（0.882）方面均显示出更好的性能。此外，我们的模型不需要额外的特征提取步骤来进行训练或预测。在本研究中，我们收集了迄今为止最大的数据集，以支持腺样体肥大的自动诊断。我们还验证了深度学习在协助人类专家方面的有效性。</p>
+<p>在过去的 5 年中，许多医生已经开始将深度学习应用到各种医疗应用中。深度学习技术有望成为临床上最适用的分类方法之一。主要原因是在分类任务中手动纠错比在其他类型的任务中更容易，例如分割和关键点定位。随着时间的流逝，可以发现更多具有不正确预测的样本并将其添加到训练集中以改善深度学习模型的性能。因此，模型性能可能会随着临床医生的使用时间而进一步提高。同时，分类任务比诸如分类和关键点定位之类的非分类任务更适合深度学习。这种情况可以用不确定性错误的问题来解释。对于深度学习，不可能使用手动错误校正来提高模型在细分和其他任务中的性能。因此，在本研究中，我们决定使用深度学习对 X 射线图像进行分类以获得诊断结论，而不是执行其他类型的任务来进行诊断。需要针对不同的数据集综合考虑模型的结构。医学领域的数据集不同于日常生活中收集到的许多数据集，并且比它更小。同时，典型的深度学习模型具有大量参数。因此，如果使用小数据集训练典型模型，则在深度学习的各种应用中会广泛出现过拟合问题。为了避免过拟合的问题，我们在这项工作中开发了一个基于 VGG16 的 Lite 模型。我们的参数较少的模型比参数较多的 VGG16 模型表现更好。</p>
+<p>我们之所以采用分类模型 VGG 而不是像 YOLO 这样的图像检测模型，争论如下：VGG 模型的输出是 X 射线图像作为输入的每个类别的概率，但图像检测模型需要人类专家在每张 X 射线图像上记录腺样体区域的位置，并标记每个区域的检测结果。对于腺样体肥大的检测，腺样体区域固定在原始X线图像的中心。我们可以轻松地在 X 射线图像上裁剪该区域，而不是使用具有潜在区域检测误差的 YOLO 模型动态检测腺样体区域。此外，在这项研究中，我们的模型是通过从原始 X 射线图像中裁剪出来的腺样体区域进行训练的。在图像处理中，基于感兴趣区域（ROI）的方法是一种常用的模型构建方式。基于 ROI 的方法有一些优点。首先，与原始 X 射线图像相比，ROI 以较少的数据作为输入为评估提供了足够的信息。较小尺寸的 ROI 减少了内存开销。其次，深度学习是内存和计算中一种消耗资源的方法。高分辨率的输入图像需要更多的计算工作量和内存资源。因此，我们建议需要额外的预处理，例如 ROI 提取，因为它是资源友好的。</p>
+<p>然而，我们的研究存在一些局限性。首先，一些图像在数据集的构建过程中被错误地注释，因此这项工作需要进一步的手动数据清理。鉴于我们的数据集只有大约 1,000 张 X 射线图像，这应该是可行的。当使用超大数据集时，自动数据清理的未来工作对于基于深度学习的医学应用将非常有意义。其次，我们的 1,023 张 X 射线图像是由 Pax-400C 和 Morita X550 以 2 种分辨率生成的。我们的模型在其他分辨率下可能不稳健，未来应该通过使用其他分辨率的图像适当扩展训练集来解决这个问题。第三，与其他牙科研究类似，我们的研究必须使用多个人类注释者来独立评估头颅测量图像上的腺样体，因为不同正畸医生的放射学评估不可避免地倾向于主观。因此，放射学评估中不可避免的主观性可能会影响结果，这对我们的研究造成了限制。</p>
+<h2 id="结论-1"><a href="#结论-1" class="headerlink" title="结论"></a>结论</h2><p>本文表面，与手动诊断相比，深度学习方法可以以更高的准确性和更快的速度自动检测病理性腺样体肥大。 基于典型深度学习结构的 Lite 模型在基于医学图像的腺样体肥大自动诊断方面表现出良好的性能。 深度学习可能是减轻口腔医生早期筛查工作量和提高腺样体肥大诊断准确性的有用工具。</p>
+
+    </div>
+
+    
+    
+    
+      
+        <div class="reward-container">
+  <div></div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Wei Cheney 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Wei Cheney 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2021/05/15/CVPR2021%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F/" rel="next" title="CVPR2021医学影像">
+                  <i class="fa fa-chevron-left"></i> CVPR2021医学影像
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#材料和方法"><span class="nav-number">2.</span> <span class="nav-text">材料和方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#研究人口和图像数据集"><span class="nav-number">2.1.</span> <span class="nav-text">研究人口和图像数据集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#深度学习模型"><span class="nav-number">3.1.</span> <span class="nav-text">深度学习模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型性能与仅限专家检测的比较"><span class="nav-number">3.2.</span> <span class="nav-text">模型性能与仅限专家检测的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有或没有深度学习辅助的人类专家的比较"><span class="nav-number">3.3.</span> <span class="nav-text">有或没有深度学习辅助的人类专家的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#观察者间和观察者内协议"><span class="nav-number">3.4.</span> <span class="nav-text">观察者间和观察者内协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#讨论"><span class="nav-number">4.</span> <span class="nav-text">讨论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论-1"><span class="nav-number">5.</span> <span class="nav-text">结论</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Wei Cheney"
+    src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Wei Cheney</p>
+  <div class="site-description" itemprop="description">谦谦君子，温润如玉</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenypic" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;chenypic" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:cherycheny@gmail.com" title="E-Mail &amp;rarr; mailto:cherycheny@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/2923640394" title="Weibo &amp;rarr; https:&#x2F;&#x2F;weibo.com&#x2F;2923640394" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/cherycheny" title="Twitter &amp;rarr; https:&#x2F;&#x2F;twitter.com&#x2F;cherycheny" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wei Cheney</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'b518bd54c879c20706b4',
+      clientSecret: 'f601dee7ed1d248ae971191226d140acbb9ca107',
+      repo: 'PingLun',
+      owner: 'chenypic',
+      admin: ['chenypic'],
+      id: '7da67e118a94d6e53045b397b541a82c',
+        language: '',
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
+
+</body>
+</html>
