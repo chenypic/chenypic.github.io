@@ -58,8 +58,14 @@
 <meta property="og:site_name" content="AiChery">
 <meta property="og:description" content="在CBCT中准确分割颌骨（即下颌骨和上颌骨）和牙齿对于正畸诊断和治疗计划至关重要。尽管已经提出了各种（半）自动化方法来分割颌骨或牙齿，但仍然缺乏可以在 CBCT 扫描中同时分割两个解剖结构（即多类分割）的全自动分割方法。针对此问题，阿姆斯特丹自由大学研究人员提出了mixed-scale dense (MS-D) 卷积神经网络，用于对 CBCT 扫描中的颌骨、牙齿和背景进行多类分割。从接受过正畸治疗">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-05-30T10:55:32.000Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;CBCT_Seg_1.PNG">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;CBCT_Seg_2.PNG">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;CBCT_Seg_3.PNG">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;CBCT_Seg_4.PNG">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;CBCT_Seg_5.PNG">
+<meta property="og:updated_time" content="2021-05-31T14:13:21.000Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;CBCT_Seg_1.PNG">
 
 <link rel="canonical" href="http://yoursite.com/2021/05/30/%E5%9C%A8%E6%AD%A3%E7%95%B8%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%88%86%E5%89%B2CBCT/">
 
@@ -217,10 +223,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-05-30 18:40:56 / 修改时间：18:55:32" itemprop="dateCreated datePublished" datetime="2021-05-30T18:40:56+08:00">2021-05-30</time>
+              <time title="创建时间：2021-05-30 18:40:56" itemprop="dateCreated datePublished" datetime="2021-05-30T18:40:56+08:00">2021-05-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 22:13:21" itemprop="dateModified" datetime="2021-05-31T22:13:21+08:00">2021-05-31</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -243,13 +255,43 @@
         <p>在CBCT中准确分割颌骨（即下颌骨和上颌骨）和牙齿对于正畸诊断和治疗计划至关重要。尽管已经提出了各种（半）自动化方法来分割颌骨或牙齿，但仍然缺乏可以在 CBCT 扫描中同时分割两个解剖结构（即多类分割）的全自动分割方法。针对此问题，阿姆斯特丹自由大学研究人员提出了mixed-scale dense (MS-D) 卷积神经网络，用于对 CBCT 扫描中的颌骨、牙齿和背景进行多类分割。从接受过正畸治疗的患者中获得了 30 次 CBCT 扫描，金标准分割标签由 4 位牙医手动创建。作为基准，作者还评估了分割颌骨或牙齿的 MS-D 网络（即二元分割）。所有分割的 CBCT 扫描都转换为虚拟 3D 模型。所有经过训练的 MS-D 网络的分割性能都通过 Dice 相似系数和表面偏差来评估。由 MS-D 网络分割的 CBCT 扫描显示与金标准分割有很大的重叠（Dice系数：颌骨，0.934 ± 0.019；牙齿，0.945 ± 0.021）。与相应的金标准3D模型（下颌0.390±0.093毫米；下颌0.204±0.061毫米）相比，基于MS-D网络的颌骨和牙齿3D模型显示出较小的表面偏差。 MS-D 网络需要大约 25 秒来分割 1 次 CBCT 扫描，而手动分割需要大约 5 小时。该研究表明，颌骨和牙齿的多类分割是准确的，其性能与二元分割相当。因此，针对多类分割训练的 MS-D 网络将通过大大减少在 CBCT 扫描中分割多个解剖结构所需的时间，使特定于患者的正畸治疗更加可行。</p>
 <a id="more"></a>
 <blockquote>
-<p>Wang H, Minnema J, Batenburg K J, et al. Multiclass CBCT Image Segmentation for Orthodontics with Deep Learning[J]. Journal of Dental Research, 2021: 00220345211005338.</p>
+<p>Wang H, Minnema J, Batenburg K J, et al. Multiclass CBCT Image Segmentation for Orthodontics with Deep Learning[J]. Journal of Dental Research, 2021: 00220345211005338. <a href="https://000papers-1253296122.cos.ap-chengdu.myqcloud.com/oral/Multiclass%20CBCT%20Image%20Segmentation%20for%20Orthodontics%20with%20Deep%20Learning.pdf" target="_blank" rel="noopener">点我下载</a> </p>
 </blockquote>
 <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>锥形束计算机断层扫描 (CBCT) 因其低成本和低辐射剂量而越来越多地用于正畸。 CBCT 扫描中嵌入的 3D信息使正畸医生能够准确评估复杂的牙齿和骨骼错牙合，这有助于显着改善诊断和治疗计划。诊断牙面异常和畸形的一个重要步骤是将 CBCT 扫描转换为感兴趣的相关解剖区域的虚拟 3D 模型，例如下颌骨、上颌骨和牙齿。通过在不同时间点叠加患者的 3D 模型，可以直观地和定量地评估正畸变化。此外，这些 3D 模型可用于通过有限元分析模拟牙槽骨中的应力分布。</p>
 <p>目前，为正畸创建 3D 模型最具挑战性的步骤是 CBCT 图像分割，即将 CBCT 扫描划分为各种感兴趣的解剖区域。例如，由于牙根与其周围牙槽骨的强度相似，因此分割牙齿很费力。此外，由于高噪声水平、有限的图像分辨率和锥形束伪影，很难准确分割骨结构，例如髁突和支。因此，骨结构经常被错误地标记，这在转换为 3D 模型时会导致空洞和间隙，从而影响治疗计划和有限元分析的质量。</p>
 <p>在过去的几十年中，已经提出了几种方法来（半）自动分割 CBCT 扫描中的各种解剖结构。这种自动方法包括边缘检测、分水岭分割、区域种子生长、聚类方法、形态蛇、随机森林和统计形状模型。尽管这些方法能够分割 CBCT 扫描，但准确分割下颌骨、上颌骨和牙齿仍然具有挑战性。因此，在临床环境中仍然需要费力的手动校正来实现准确的分割。因此，寻求用于自动图像分割的新方法。</p>
 <p>深度卷积神经网络 (CNN) 最近越来越多地用于医学图像分割，并取得了最先进的性能 。 CNN 的成功主要归功于它们在输入图像中学习非线性空间特征的能力。几个研究小组已经使用 CNN 来分割下颌骨或牙齿（即二元分割），并证明 CNN 能够执行准确的分割任务。然而，尚未发表任何研究将 CNN 应用于在 CBCT 扫描中同时分割颌骨（即下颌骨和上颌骨）和牙齿，也称为多类分割。与二元分割相比，多类分割方法只需要训练一个网络来分割颌骨和牙齿，从而减少了整体训练时间。此外，多类分割不会受到分割标签冲突的影响。当一个二元分割网络将一个像素分类为颌骨而另一个将其分类为牙齿时，就会导致这种标签冲突。</p>
 <p>一种新颖的CNN体系结构，即混合规模的密集（MS-D）CNN，最近显示出有希望的分割性能。这种 MS-D 网络允许准确和自动分割不同的骨结构。为了减少为患者特定的正畸治疗创建 3D 模型所需的耗时且昂贵的体力劳动，我们的目标是训练 MS-D 网络在 CBCT 扫描中同时分割颌骨和牙齿。</p>
+<h2 id="材料和方法"><a href="#材料和方法" class="headerlink" title="材料和方法"></a>材料和方法</h2><p>CBCT 扫描信息、CNN 架构、实现和训练细节以及 CNN 性能评估在附录中提供。</p>
+<h3 id="数据采集和预处理"><a href="#数据采集和预处理" class="headerlink" title="数据采集和预处理"></a>数据采集和预处理</h3><p>从先前在上海徐汇牙科中心接受过正畸治疗的患者（年龄，11 至 24 岁；平均±标准差，14.2±3.4 岁；19 名女性和 11 名男性）获得了 30 次 CBCT 扫描。本研究中使用的 CBCT 扫描是在正畸治疗之前获得的，并且没有患者有填充物、种植牙或牙冠。因此，CBCT 扫描没有金属伪影。此外，没有患者牙齿缺失，大多数患者的智齿尚未萌出（n = 22）。每位患者和至少一位家长签署知情同意书。患者数据的使用经上海市徐汇口腔中心医学伦理委员会批准（第20193号）。</p>
+<p>由于这项研究专注于分割颌骨和牙齿，我们将所有 CBCT 裁剪到这些解剖区域，轴向尺寸范围在 255 到 384 之间。从 30 次 CBCT 中总共获得了 9507 个切片。</p>
+<p>为了获得金标准标签，所有 30 次 CBCT 扫描被分为 3 类：颌骨、牙齿和背景。手动分割由 4 名至少有 2 年牙科诊所工作经验的牙医完成。 4 位牙医接受了良好的指导和广泛的实践，直到他们能够在 CBCT 中准确地注释下颌和牙齿。之后，将 30 个 CBCT 扫描分布在 4 个注释器中，并且每个 CBCT 仅被单个注释器分割一次。这种分割是用全局阈值进行的，然后是手动校正——即通过 Mimics 21.0 软件去除噪声、伪影和不相关的部分，以及在分割的扫描中添加缺失的薄骨结构和填充错误的空腔。由此产生的分割标签被用作金标准。</p>
+<h3 id="CNN-Architecture"><a href="#CNN-Architecture" class="headerlink" title="CNN Architecture"></a>CNN Architecture</h3><p>在本研究中，采用了由 Pelt 和 Sethian (2018) 开发的 MS-D 网络。 图 1A 显示了深度为 3、宽度为 1 的 MS-D 网络的示意图。</p>
+<blockquote>
+<p>Pelt, D. M., &amp; Sethian, J. A. (2018). A mixed-scale dense convolutional neural network for image analysis. <em>Proceedings of the National Academy of Sciences</em>, <em>115</em>(2), 254-259.</p>
+</blockquote>
+<p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/oral/CBCT_Seg_1.PNG" alt=""></p>
+<h3 id="实施和训练详情"><a href="#实施和训练详情" class="headerlink" title="实施和训练详情"></a>实施和训练详情</h3><p>设计了三个实验来评估 MS-D 网络的分割性能。第一个实验是多类别分割，其中训练了MS-D网络以同时细分3个标签：颌骨，牙齿和背景。第二个和第三个实验是二元分割，其中 MS-D 网络分别分割颌骨或牙齿。</p>
+<p>28 次 CBCT 扫描分为 4 个子集（S1、S2、S3 和 S4），每个子集包含 7 个扫描。每个实验都遵循 4 折交叉验证方案，这意味着 3 个子集用于训练，1 个用于测试。此过程重复 4 次，以便每次 CBCT 扫描仅用于测试一次（图 1B）。未包含在 4 折交叉验证方案中的 2 次 CBCT 扫描用于确定训练的最佳 epoch 数。</p>
+<h3 id="CNN-性能评估"><a href="#CNN-性能评估" class="headerlink" title="CNN 性能评估"></a>CNN 性能评估</h3><p>MS-D 网络的分割性能通过 Dice 相似系数（DSC）进行评估。 DSC 是在患者水平上计算的，这意味着为每个分割的 CBCT 体积计算单个 DSC。计算基于 MS-D 网络的 3D 模型与金标准之间的表面偏差，以评估骨结构边缘周围 MS-D 分割的准确性。此外，还计算了基于 MS-D 网络的 3D 模型和金标准之间的平均绝对偏差 (MAD)。在交叉验证方案的 4 次迭代之后，MS-D 网络的性能在 28 次 CBCT 扫描中取平均值。</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>多类和二元分割方法实现了相似的分割精度（图 2A、B）。前一种方法的颌骨DSC 介于 0.901（患者 3）和 0.968（患者 28）之间，平均值为 0.934 ± 0.019。牙齿的 DSC 介于 0.881（患者 2）和 0.971（患者 28）之间，平均值为 0.945 ± 0.021。对于二元分割，颌骨的 DSC 范围从 0.892（患者 3）到 0.966（患者 28），平均值为 0.933 ± 0.020。牙齿的 DSC 范围从 0.889（患者 2）到 0.973（患者 28），平均值为 0.948 ± 0.021。患者 3 下颌的最低 DSC 是由于其金标准中较大的上颌骨排除区域，而该排除区域由 MS-D 分割（图 2C）。来自患者2的牙齿的最低DSC归因于当MS-D分割这些牙齿时，未长出的牙齿未包含在金标准中（图2D）。使用多类和二元分割方法获得的 DSC 的比较显示，颌骨分割的 90% CI 差异为 -0.001 至 0.003，牙齿分割的差异为 -0.004 至 -0.001，这表明这两种方法具有相当的95%置信度。</p>
+<p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/oral/CBCT_Seg_2.PNG" alt=""></p>
+<p>来自患者 9 的 CBCT 扫描的多类分割示例如图 3 所示。选择了代表不同颅骨解剖结构的五个轴向 CBCT 切片。 差异图显示误差主要发生在边缘，偏差约为 1 个像素（图 3A、B）。 与金标准相比，上颌窦周围的一些薄骨结构没有被 MS-D 网络分割（图 3E）。</p>
+<p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/oral/CBCT_Seg_3.PNG" alt=""></p>
+<p>图 4A 显示了从多类和二元分割中获得的所有 3D 颌模型的表面偏差。 图 4B 说明了来自多类分割的 3 个颌模型。 患者 28 和 12 分别对应于最小和最大 MAD。 患者 25 的 MAD 接近平均 MAD。 下颌模型的所有 MAD 值列于附录表中。 在分析颌模型时，多类分割导致表面偏差从-0.191±1.095 mm（患者14）到0.185±1.011 mm（患者3），平均MAD为0.390±0.093 mm。 二元分割导致表面偏差从 -0.180 ± 1.069 mm（患者 14）到 0.252 ± 1.058 mm（患者 3），平均 MAD 为 0.410 ± 0.103 mm。</p>
+<p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/oral/CBCT_Seg_4.PNG" alt=""></p>
+<p>图 5A 显示了从多类和二元分割中获得的所有 3D 牙齿模型的表面偏差。 图 5B 展示了来自多类分割的 3 个牙齿模型。 患者 28 和 23 分别对应于最小和最大 MAD。 患者 14 的 MAD 接近平均 MAD。 牙齿模型的所有 MAD 值列于附录表中。 在分析牙齿模型时，多类分割导致表面偏差从 -0.107 ± 0.546 mm（患者 5）到 0.318 ± 0.347 mm（患者 23），平均 MAD 为 0.204 ± 0.061 mm。 二元分割导致表面偏差从 -0.116 ± 0.534 mm（患者 12）到 0.290 ± 0.272 mm（患者 23），平均 MAD 为 0.163 ± 0.051 mm。</p>
+<p><img src="https://blog-1253296122.cos.ap-chengdu.myqcloud.com/oral/CBCT_Seg_5.PNG" alt=""></p>
+<h3 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h3><p>CBCT 越来越多地用于创建虚拟 3D 模型，以定量评估正畸变化，例如牙齿吸收、髁突生长以及下巴和牙齿的运动。创建这些 3D 模型需要准确分割颌骨（即下颌骨和上颌骨）和牙齿。然而，手动分割这 2 个解剖结构既费时又费力，而且成本高昂。在这项研究中，我们训练了一个新的 MS-D 网络，以在 CBCT 扫描中同时分割颌骨和牙齿（即多类分割）。由 MS-D 网络分割的颌骨和牙齿显示出高 DSC，与黄金标准相比，它们的 3D 模型显示出较小的表面偏差。 MS-D网络在1次CBCT扫描中花费了大约25 s来分割颌骨和牙齿，从而显着减少了分割所需的时间。因此，针对多类分割训练的 MS-D 网络具有准确和自动分割多个感兴趣的解剖结构以进行正畸诊断和治疗的潜力。</p>
+<p>多类分割被认为具有挑战性，因为它面临类数据不平衡和类间特征相似性问题（Chen et al. 2018; Novikov et al. 2018; Jafari et al. 2019）。与多类策略相比，二元策略通常更稳健，准确率更高，但代价是训练时间增加（Berstad 等人，2018 年；Gómez 等人，2020 年）。在这项研究中，针对多类分割训练的 MS-D 网络能够在 CBCT 扫描中准确地分割颌骨和牙齿，达到与二元分割相当的准确性。这表明与二元分割相比，MS-D 网络可以用 3 个类进行训练，而不会损失分割精度。此外，多类分割比二元分割有两个重要的优势。首先是多类分割只需要训练一个 CNN 来分割颌骨和牙齿，这是训练二元分割所需的 2 个 CNN 的两倍。具体来说，训练一个 MS-D 网络大约需要 20 小时（每个时期 1 小时），1 次 CBCT 扫描的分割大约需要 25 秒。尽管如此，必须注意的是，两种深度学习方法的分割时间仍然明显少于手动分割，每次 CBCT 扫描大约需要 5 小时。第二个优点是与二进制分割相反，多类分割不会产生冲突的标签。当 1 个二元分割网络将一个像素分类为下巴而另一个将其分类为牙齿时，就会导致这些标签冲突（附录图）。</p>
+<p>在这项研究中训练的MS-D网络所产生的DSC与文献中的DSC相当。对于下颌骨分割，Qiu 等人。 (2018) 通过使用来自轴向、矢状或冠状面的 CBCT 切片训练 3 个 CNN，然后结合所有 3 个 CNN 的分割结果，获得了 0.896 的平均 DSC。对于上颌骨分割，S. Chen 等人发现了 0.800 ± 0.029 的较低平均 DSC。 (2020)，谁使用了基于学习的多源集成框架。对于牙齿分割，Lee 等人。 (2020) 应用多阶段策略来训练基于 U-Net 的架构，这导致 DSC 的范围从 0.910 到 0.918。此外，崔等人。 (2019) 采用了由牙齿边缘图提取网络和区域提议网络组成的 2 阶段网络，并报告了 0.926 的平均 DSC。与上述研究相比，本研究中使用的 MS-D 网络实现了可比的 DSC。然而，审查的研究使用不同的数据集来评估他们的方法，这意味着应该谨慎解释 DSC 之间的差异。</p>
+<p>所有基于MS-D网络的3D模型都与相应的金标准3D模型非常相似。我们研究中发现的表面偏差通常低于 Wang 等人获得的表面偏差。 (2016)，他开发了一种随机森林方法来在 CBCT 扫描中分割下颌骨和牙齿。在分割下颌骨时，他们的方法导致表面偏差为 0.420 ± 0.150 mm，而上下牙齿的分割导致表面偏差分别为 0.312 ± 0.103 mm 和 0.346 ± 0.154 mm。我们的 MS-D 网络分割还导致牙齿表面偏差低于 Y. Chen 等人开发的多任务完全 CNN。 (2020)。他们的网络针对单个牙齿分割进行了训练，导致平均表面偏差为 0.363 ± 0.145 毫米。</p>
+<p>本研究中训练的 MS-D 网络的分割错误主要发生在骨结构的边缘（图 3）。这些分割错误很可能是由于部分体积效应造成的。当具有不同密度的组织包含在同一体素中时，就会发生这种情况，这通常是在 2 个解剖区域（例如，骨骼和软组织）的边界处的情况。因此，很难准确定义骨结构的边缘区域。这种现象也可以解释为什么上颌骨中的一些薄骨结构没有被 MS-D 网络正确分割（图 3E）。 CBCT扫描的质量也会影响分割的准确性。例如，在 12 号患者的 CBCT 扫描中，支部和髁部的分割很差（图 4B），因为这些区域受到运动伪影的影响。</p>
+<p>医学和牙科领域深度学习的一个挑战是获得准确的黄金标准（Schwendicke 等人，2020 年）。黄金标准通常由人工注释者创建，其中包含内在的观察者间和观察者内的可变性。然而，深度学习可以从大型训练数据集中学习，因此能够克服这种可变性（Naylor 2018）。在这项研究中，黄金标准分割标签由 4 位牙医注释，这引入了黄金标准的主观可变性。例如，1 名患者未萌出的牙齿不包括在金标准中。因为 MS-D 网络能够从所有分割的 CBCT 图像中学习，所以 CBCT 扫描中未萌出的牙齿都被 MS-D 网络正确分割。这些发现表明 MS-D 网络可以减少主观可变性的影响。如果测试集中包含不准确的黄金标准标签，这可能会影响网络的评估，特别是对于小数据集。然而，由于 MS-D 网络的性能是在 28 次 CBCT 扫描上评估的，因此可以将测试集中 1 次不准确的金标准扫描的影响降到最低。</p>
+<p>在本研究中，采用 MS-D 网络来评估多类分割性能。选择这个网络是因为它的参数相对较少，比其他 CNN 更容易训练和应用（Pelt and Sethian 2018）。将 MS-D 网络的多类分割性能与 U-Net 进行了比较，表明它能够实现与 U-Net 相似的分割精度（Pelt and Sethian 2018）。尽管如此，MS-D 网络并不是唯一能够执行多类分割的 CNN 架构。已经实施了其他几种 CNN 架构来对大脑（Chen 等人，2018 年；Jafari 等人，2019 年）和肺（Novikov 等人，2018 年；Saood 和 Hatem，2020 年）中的解剖结构进行多类分割。</p>
+<p>在本研究中，所有 CBCT 扫描均来自没有牙齿填充物、植入物或正畸装置的患者，以避免金属伪影的影响。在日常的临床实践中，可能会出现这样的伪影，因此在临床中应用当前的研究结果时应谨慎。对复杂牙齿状态的CBCT图像分割有待进一步研究。</p>
+<p>为了便于CNN训练，上颌骨和下颌骨被认为是一个类，上下牙齿被认为是另一个类。然而，人们可能希望在分割过程中自动将下颌骨与上颌骨分开并分类单个牙齿。使用大多数图像处理软件中可用的区域生长方法可以轻松地分离下颌骨和上颌骨，但单个牙齿的分割仍然需要后处理。为了使单个牙齿的自动分割成为可能，我们的目标是在未来工作中训练 MS-D 网络期间包含不同牙齿的单个标签。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>这项研究应用了一种新的 MS-D 网络将 CBCT 扫描分割成下颌、牙齿和背景。 多类分割实现了与二进制分割相当的分割精度。 此外，基于 MS-D 网络的 3D 模型与黄金标准 3D 模型非常相似。 这些结果表明，深度学习具有在 CBCT 扫描中准确、同时分割颌骨和牙齿的潜力。 这将大大减少在临床环境中花费的时间和精力，从而简化了针对患者的正畸治疗。</p>
 
     </div>
 
@@ -331,7 +373,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#材料和方法"><span class="nav-number">2.</span> <span class="nav-text">材料和方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据采集和预处理"><span class="nav-number">2.1.</span> <span class="nav-text">数据采集和预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CNN-Architecture"><span class="nav-number">2.2.</span> <span class="nav-text">CNN Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实施和训练详情"><span class="nav-number">2.3.</span> <span class="nav-text">实施和训练详情</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CNN-性能评估"><span class="nav-number">2.4.</span> <span class="nav-text">CNN 性能评估</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结果"><span class="nav-number">3.</span> <span class="nav-text">结果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#讨论"><span class="nav-number">3.1.</span> <span class="nav-text">讨论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">3.2.</span> <span class="nav-text">结论</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
