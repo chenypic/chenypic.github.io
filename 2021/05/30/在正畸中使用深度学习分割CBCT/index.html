@@ -53,7 +53,7 @@
 
   <meta name="description" content="在CBCT中准确分割颌骨（即下颌骨和上颌骨）和牙齿对于正畸诊断和治疗计划至关重要。尽管已经提出了各种（半）自动化方法来分割颌骨或牙齿，但仍然缺乏可以在 CBCT 中同时分割两个解剖结构（即多类分割）的全自动分割方法。针对此问题，阿姆斯特丹自由大学研究人员提出了mixed-scale dense (MS-D) 卷积神经网络，用于对 CBCT 扫描中的颌骨、牙齿和背景进行多类分割。从接受正畸治疗的患者">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在正畸中使用深度学习分割CBCT">
+<meta property="og:title" content="在正畸和种植中使用深度学习分割CBCT">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2021&#x2F;05&#x2F;30&#x2F;%E5%9C%A8%E6%AD%A3%E7%95%B8%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%88%86%E5%89%B2CBCT&#x2F;index.html">
 <meta property="og:site_name" content="AiChery">
 <meta property="og:description" content="在CBCT中准确分割颌骨（即下颌骨和上颌骨）和牙齿对于正畸诊断和治疗计划至关重要。尽管已经提出了各种（半）自动化方法来分割颌骨或牙齿，但仍然缺乏可以在 CBCT 中同时分割两个解剖结构（即多类分割）的全自动分割方法。针对此问题，阿姆斯特丹自由大学研究人员提出了mixed-scale dense (MS-D) 卷积神经网络，用于对 CBCT 扫描中的颌骨、牙齿和背景进行多类分割。从接受正畸治疗的患者">
@@ -63,7 +63,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;CBCT_Seg_3.PNG">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;CBCT_Seg_4.PNG">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;CBCT_Seg_5.PNG">
-<meta property="og:updated_time" content="2021-06-02T06:48:00.874Z">
+<meta property="og:updated_time" content="2021-06-03T02:37:47.586Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;CBCT_Seg_1.PNG">
 
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>在正畸中使用深度学习分割CBCT | AiChery</title>
+  <title>在正畸和种植中使用深度学习分割CBCT | AiChery</title>
   
 
 
@@ -214,7 +214,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          在正畸中使用深度学习分割CBCT
+          在正畸和种植中使用深度学习分割CBCT
         </h1>
 
         <div class="post-meta">
@@ -231,7 +231,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-02 14:48:00" itemprop="dateModified" datetime="2021-06-02T14:48:00+08:00">2021-06-02</time>
+                <time title="修改时间：2021-06-03 10:37:47" itemprop="dateModified" datetime="2021-06-03T10:37:47+08:00">2021-06-03</time>
               </span>
 
           
@@ -293,7 +293,7 @@
 <p>在本研究中，采用 MS-D 网络来评估多类分割性能。选择这个网络是因为它的参数相对较少，比其他 CNN 更容易训练和应用。将 MS-D 网络的多类分割性能与 U-Net 进行了比较，表明它能够实现与 U-Net 相似的分割精度。尽管如此，MS-D 网络并不是唯一能够执行多类分割的 CNN 架构。已经实施了其他几种 CNN 架构来对大脑和肺中的解剖结构进行多类分割。</p>
 <p>在本研究中，所有 CBCT 均来自没有牙齿填充物、植入物或正畸装置的患者，以避免金属伪影的影响。在日常的临床实践中，可能会出现这样的伪影，因此在临床中应用当前的研究结果时应谨慎。<strong>对复杂牙齿状态的CBCT分割有待进一步研究。</strong> </p>
 <p>为了便于CNN训练，上颌骨和下颌骨被认为是一个类，上下牙齿被认为是另一个类。然而，人们可能希望在分割过程中自动将下颌骨与上颌骨分开并分类单个牙齿。使用大多数图像处理软件中可用的区域生长方法可以轻松地分离下颌骨和上颌骨，但单个牙齿的分割仍然需要后处理。<strong>为了使单个牙齿的自动分割成为可能，我们的目标是在未来工作中训练 MS-D 网络期间包含不同牙齿的单个标签。</strong>  </p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>这项研究应用了一种新的 MS-D 网络将 CBCT 扫描分割成颌骨、牙齿和背景。 多类分割实现了与二元分割相当的分割精度。 此外，基于 MS-D 网络的 3D 模型与金标准 3D 模型非常相似。 这些结果表明，深度学习具有在 CBCT 扫描中准确、同时分割颌骨和牙齿的潜力。 这将大大减少在临床环境中花费的时间和精力，从而简化了针对患者的正畸治疗。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>本研究应用了一种新的 MS-D 网络将 CBCT 扫描分割成颌骨、牙齿和背景。 多类分割实现了与二元分割相当的分割精度。 此外，基于 MS-D 网络的 3D 模型与金标准 3D 模型非常相似。 这些结果表明，深度学习具有在 CBCT 扫描中准确、同时分割颌骨和牙齿的潜力。 这将大大减少在临床环境中花费的时间和精力，从而简化了针对患者的正畸治疗。</p>
 
     </div>
 

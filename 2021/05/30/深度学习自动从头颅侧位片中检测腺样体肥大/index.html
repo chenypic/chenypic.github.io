@@ -63,7 +63,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;Adenoid_3.PNG">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;Adenoid_4.PNG">
 <meta property="og:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;Adenoid_5.PNG">
-<meta property="og:updated_time" content="2021-05-30T10:23:36.806Z">
+<meta property="og:updated_time" content="2021-06-03T02:38:01.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;blog-1253296122.cos.ap-chengdu.myqcloud.com&#x2F;oral&#x2F;Adenoid_1.PNG">
 
@@ -223,10 +223,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-05-30 18:22:51 / 修改时间：18:23:36" itemprop="dateCreated datePublished" datetime="2021-05-30T18:22:51+08:00">2021-05-30</time>
+              <time title="创建时间：2021-05-30 18:22:51" itemprop="dateCreated datePublished" datetime="2021-05-30T18:22:51+08:00">2021-05-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-03 10:38:01" itemprop="dateModified" datetime="2021-06-03T10:38:01+08:00">2021-06-03</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -280,7 +286,7 @@
 <p>在过去的 5 年中，许多医生已经开始将深度学习应用到各种医疗应用中。深度学习技术有望成为临床上最适用的分类方法之一。主要原因是在分类任务中手动纠错比在其他类型的任务中更容易，例如分割和关键点定位。随着时间的流逝，可以发现更多具有不正确预测的样本并将其添加到训练集中以改善深度学习模型的性能。因此，模型性能可能会随着临床医生的使用时间而进一步提高。同时，分类任务比诸如分类和关键点定位之类的非分类任务更适合深度学习。这种情况可以用不确定性错误的问题来解释。对于深度学习，不可能使用手动错误校正来提高模型在细分和其他任务中的性能。因此，在本研究中，我们决定使用深度学习对 X 射线图像进行分类以获得诊断结论，而不是执行其他类型的任务来进行诊断。需要针对不同的数据集综合考虑模型的结构。医学领域的数据集不同于日常生活中收集到的许多数据集，并且比它更小。同时，典型的深度学习模型具有大量参数。因此，如果使用小数据集训练典型模型，则在深度学习的各种应用中会广泛出现过拟合问题。为了避免过拟合的问题，我们在这项工作中开发了一个基于 VGG16 的 Lite 模型。我们的参数较少的模型比参数较多的 VGG16 模型表现更好。</p>
 <p>我们之所以采用分类模型 VGG 而不是像 YOLO 这样的图像检测模型，争论如下：VGG 模型的输出是 X 射线图像作为输入的每个类别的概率，但图像检测模型需要人类专家在每张 X 射线图像上记录腺样体区域的位置，并标记每个区域的检测结果。对于腺样体肥大的检测，腺样体区域固定在原始X线图像的中心。我们可以轻松地在 X 射线图像上裁剪该区域，而不是使用具有潜在区域检测误差的 YOLO 模型动态检测腺样体区域。此外，在这项研究中，我们的模型是通过从原始 X 射线图像中裁剪出来的腺样体区域进行训练的。在图像处理中，基于感兴趣区域（ROI）的方法是一种常用的模型构建方式。基于 ROI 的方法有一些优点。首先，与原始 X 射线图像相比，ROI 以较少的数据作为输入为评估提供了足够的信息。较小尺寸的 ROI 减少了内存开销。其次，深度学习是内存和计算中一种消耗资源的方法。高分辨率的输入图像需要更多的计算工作量和内存资源。因此，我们建议需要额外的预处理，例如 ROI 提取，因为它是资源友好的。</p>
 <p>然而，我们的研究存在一些局限性。首先，一些图像在数据集的构建过程中被错误地注释，因此这项工作需要进一步的手动数据清理。鉴于我们的数据集只有大约 1,000 张 X 射线图像，这应该是可行的。当使用超大数据集时，自动数据清理的未来工作对于基于深度学习的医学应用将非常有意义。其次，我们的 1,023 张 X 射线图像是由 Pax-400C 和 Morita X550 以 2 种分辨率生成的。我们的模型在其他分辨率下可能不稳健，未来应该通过使用其他分辨率的图像适当扩展训练集来解决这个问题。第三，与其他牙科研究类似，我们的研究必须使用多个人类注释者来独立评估头颅测量图像上的腺样体，因为不同正畸医生的放射学评估不可避免地倾向于主观。因此，放射学评估中不可避免的主观性可能会影响结果，这对我们的研究造成了限制。</p>
-<h2 id="结论-1"><a href="#结论-1" class="headerlink" title="结论"></a>结论</h2><p>本文表面，与手动诊断相比，深度学习方法可以以更高的准确性和更快的速度自动检测病理性腺样体肥大。 基于典型深度学习结构的 Lite 模型在基于医学图像的腺样体肥大自动诊断方面表现出良好的性能。 深度学习可能是减轻口腔医生早期筛查工作量和提高腺样体肥大诊断准确性的有用工具。</p>
+<h2 id="结论-1"><a href="#结论-1" class="headerlink" title="结论"></a>结论</h2><p>本文表明，与手动诊断相比，深度学习方法可以以更高的准确性和更快的速度自动检测病理性腺样体肥大。 基于典型深度学习结构的 Lite 模型在基于医学图像的腺样体肥大自动诊断方面表现出良好的性能。 深度学习可能是减轻口腔医生早期筛查工作量和提高腺样体肥大诊断准确性的有用工具。</p>
 
     </div>
 
@@ -323,8 +329,8 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2021/05/30/%E5%9C%A8%E6%AD%A3%E7%95%B8%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%88%86%E5%89%B2CBCT/" rel="prev" title="在正畸中使用深度学习分割CBCT">
-                  在正畸中使用深度学习分割CBCT <i class="fa fa-chevron-right"></i>
+                <a href="/2021/05/30/%E5%9C%A8%E6%AD%A3%E7%95%B8%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%88%86%E5%89%B2CBCT/" rel="prev" title="在正畸和种植中使用深度学习分割CBCT">
+                  在正畸和种植中使用深度学习分割CBCT <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
